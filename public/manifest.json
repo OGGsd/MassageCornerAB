@@ -1,0 +1,95 @@
+{
+  "name": "Massage Corner Sverige AB",
+  "short_name": "Massage Corner",
+  "description": "Vårda din kropp med en härlig massage. Professionell massage i Jönköping - boka din behandling online.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#059669",
+  "background_color": "#059669",
+  "lang": "sv",
+  "categories": ["health", "wellness", "lifestyle", "medical"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "36x36",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Boka medicinsk massage",
+      "short_name": "Medicinsk",
+      "description": "Boka medicinsk massage med ultraljudbehandling",
+      "url": "/?category=medicinsk",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Boka klassisk massage", 
+      "short_name": "Klassisk",
+      "description": "Boka djupgående klassisk massage",
+      "url": "/?category=klassisk",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Ring oss",
+      "short_name": "Ring",
+      "description": "Ring Massage Corner direkt",
+      "url": "tel:0731759567",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

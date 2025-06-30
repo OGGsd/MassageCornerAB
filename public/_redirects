@@ -1,0 +1,20 @@
+# Netlify redirects for SPA routing
+# This ensures all routes are handled by the React app
+
+# Swedish URL redirects
+/om-oss /about 301
+/privacy /integritetspolicy 301
+/terms /anvandardvillkor 301
+
+# Ensure SPA routing works for Swedish URLs  
+/integritetspolicy /index.html 200
+/anvandardvillkor /index.html 200
+
+# Handle all routes by serving index.html
+/*    /index.html   200
+
+# Optional: Handle specific API routes if needed in the future
+# /api/*  /api/:splat  200
+
+# Handle 404s by serving the React app
+/404   /index.html   200

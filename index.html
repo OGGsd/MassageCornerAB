@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Enhanced Favicon Implementation -->
+    <link rel="icon" type="image/png" sizes="36x36" href="/logo.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/logo.png" />
+    <link rel="icon" type="image/png" sizes="72x72" href="/logo.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/logo.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/logo.png" />
+    
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="shortcut icon" type="image/png" href="/logo.png" />
+    
+    <!-- Enhanced viewport for iOS iframe compatibility -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+    <meta name="theme-color" content="#059669" />
+    <meta name="description" content="Massage Corner Sverige AB - Vårda din kropp med en härlig massage. Boka din behandling online." />
+    
+    <!-- Enhanced PWA Meta Tags for iOS -->
+    <meta name="application-name" content="Massage Corner Sverige AB" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Massage Corner" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#059669" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- Enhanced Content Security Policy for iframe security -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self' https:;
+      script-src 'self' 'unsafe-inline' https://www.bokadirekt.se https://*.bokadirekt.se;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      frame-src 'self' https://www.bokadirekt.se https://*.bokadirekt.se;
+      connect-src 'self' https: wss:;
+      media-src 'self' https:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self' https://www.bokadirekt.se https://*.bokadirekt.se;
+    ">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/logo.png" />
+    <link rel="apple-touch-icon" sizes="96x96" href="/logo.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/logo.png" />
+    <link rel="apple-touch-icon" sizes="48x48" href="/logo.png" />
+    <link rel="apple-touch-icon" sizes="36x36" href="/logo.png" />
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Fonts with enhanced loading for iOS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Massage Corner Sverige AB" />
+    <meta property="og:description" content="Vårda din kropp med en härlig massage. Professionell massage i Jönköping - boka din behandling online." />
+    <meta property="og:site_name" content="Massage Corner Sverige AB" />
+    <meta property="og:url" content="https://www.massage-corner.se" />
+    <meta property="og:image" content="/logo.png" />
+    
+    <!-- iOS Safari specific meta tags -->
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-orientations" content="portrait" />
+    
+    <title>Massage Corner Sverige AB</title>
+  </head>
+  <body class="font-inter">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Enhanced Service Worker Registration - iOS Compatible -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered successfully');
+              
+              // Silent update handling - no user prompts (iOS compatible)
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                if (newWorker) {
+                  newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                      // New content available, but don't show popup
+                      console.log('New content available - will be used on next visit');
+                    }
+                  });
+                }
+              });
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed:', registrationError);
+            });
+        });
+      }
+
+      // iOS Safari specific optimizations
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        // Prevent iOS Safari zoom on input focus
+        document.addEventListener('touchstart', function() {}, { passive: true });
+        
+        // Prevent iOS Safari rubber band scrolling
+        document.addEventListener('touchmove', function(e) {
+          if (document.body.classList.contains('iframe-modal-open')) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+      }
+
+      // VKWebView specific optimizations
+      if (window.navigator.userAgent.includes('VKWebView')) {
+        console.log('VKWebView detected - optimizing for VK environment');
+        // Add VK-specific optimizations here if needed
+      }
+    </script>
+  </body>
+</html>

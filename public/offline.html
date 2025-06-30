@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Massage Corner Sverige AB</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .offline-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo::before {
+            content: "";
+          background-image: url('/logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        h1 {
+            color: #1F2937;
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        
+        p {
+            color: #6B7280;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        
+        .retry-btn {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+        }
+        
+        .retry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #E5E7EB;
+            color: #6B7280;
+            font-size: 14px;
+        }
+        
+        .contact-info strong {
+            color: #059669;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="logo pulse"></div>
+          Du är för närvarande offline. Kontrollera din internetanslutning och försök igen.
+          Du kan fortfarande navigera till sidor du redan besökt.
+        <p>Du är för närvarande offline. Kontrollera din internetanslutning och försök igen.</p>
+        <div className="mb-4 space-y-2">
+            <button onclick="navigateOffline('/')" class="w-full bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-700 transition-colors">
+                Hem
+            </button>
+            <button onclick="navigateOffline('/about')" class="w-full bg-gray-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-gray-700 transition-colors">
+                Om oss
+            </button>
+            <button onclick="navigateOffline('/integritetspolicy')" class="w-full bg-gray-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-gray-700 transition-colors">
+                Integritetspolicy
+            </button>
+        </div>
+        <button class="retry-btn" onclick="window.location.reload()">
+            Försök igen
+        </button>
+        <div class="contact-info">
+            <strong>Ring oss direkt:</strong><br>
+            073-175 95 67
+        </div>
+    </div>
+    
+    <script>
+        function navigateOffline(path) {
+            // Check if the page is in cache
+            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                window.location.href = path;
+            } else {
+                alert('Sidan är inte tillgänglig offline. Kontrollera din internetanslutning.');
+            }
+        }
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (e.target.onclick) {
+                    e.target.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enhanced iframe modal styles for mobile optimization */
+body.iframe-modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  /* iOS Safari specific fixes */
+  -webkit-overflow-scrolling: touch;
+  touch-action: none;
+  /* Prevent any scrolling */
+  overscroll-behavior: none;
+}
+
+/* Mobile-first iframe optimizations - Ensure iframe reaches bottom */
+.iframe-container {
+  /* Ensure iframe container takes exact calculated space */
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  /* iOS Safari specific */
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden; /* Container doesn't scroll, iframe does */
+  /* Optimize touch interactions */
+  touch-action: manipulation;
+  /* Prevent selection issues */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  /* Prevent iOS Safari from interfering with iframe touch events */
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
+  /* Ensure exact positioning */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.iframe-container iframe {
+  /* Enhanced iOS compatibility - iframe handles its own scrolling */
+  -webkit-overflow-scrolling: touch !important;
+  overflow: auto !important;
+  /* Prevent iOS Safari from adding borders */
+  border: none !important;
+  outline: none !important;
+  /* Optimize rendering */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Prevent iOS Safari touch delays */
+  touch-action: manipulation;
+  /* Ensure proper display */
+  display: block !important;
+  width: 100% !important;
+  /* Critical: Exact height to reach bottom */
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 100% !important;
+  /* Flex properties for exact sizing */
+  flex: 1;
+  flex-shrink: 0;
+  flex-grow: 1;
+  /* Ensure iframe content can scroll */
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* iOS Safari specific iframe optimizations */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari */
+  .iframe-container {
+    /* Fix iOS Safari iframe height issues */
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    /* Prevent rubber band scrolling */
+    overscroll-behavior: none;
+    /* Ensure exact positioning */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .iframe-container iframe {
+    /* iOS Safari specific height fix - exact sizing */
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    /* Prevent iOS Safari scrolling issues */
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Flex properties for iOS */
+    flex: 1 1 100%;
+    /* Ensure iframe reaches exact bottom */
+    position: relative;
+    display: block;
+  }
+}
+
+/* Enhanced iframe rendering for all platforms */
+iframe {
+  border: none !important;
+  outline: none !important;
+  /* Hardware acceleration for smooth scrolling */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Optimize touch interactions */
+  touch-action: manipulation;
+  /* Prevent selection issues */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  /* Ensure proper rendering */
+  display: block;
+  width: 100%;
+  /* Mobile optimization */
+  max-width: 100%;
+}
+
+/* VKWebView and TWA specific optimizations */
+@media screen and (display-mode: standalone) {
+  /* PWA/TWA mode optimizations */
+  .iframe-container {
+    /* Enhanced performance in standalone mode */
+    height: calc(100vh - 48px) !important;
+    max-height: calc(100vh - 48px) !important;
+    min-height: calc(100vh - 48px) !important;
+  }
+  
+  .iframe-container iframe {
+    /* Enhanced performance in standalone mode */
+    will-change: transform;
+    backface-visibility: hidden;
+    /* Full viewport usage minus header */
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 100% !important;
+  }
+  
+  /* Hide any potential browser UI */
+  body.iframe-modal-open {
+    /* Ensure full screen usage in PWA mode */
+    height: 100vh !important;
+    max-height: 100vh !important;
+  }
+}
+
+/* Prevent iOS Safari rubber band scrolling globally */
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile viewport optimizations - Ensure iframe reaches bottom */
+@media screen and (max-width: 768px) {
+  .iframe-container {
+    /* Mobile-specific optimizations - exact height calculations */
+    height: calc(100vh - 48px) !important;
+    min-height: calc(100vh - 48px) !important;
+    max-height: calc(100vh - 48px) !important;
+    /* Ensure no extra spacing */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .iframe-container iframe {
+    /* Mobile iframe optimizations - reach exact bottom */
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    /* Prevent horizontal scrolling on mobile */
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Ensure exact positioning */
+    position: relative;
+    display: block;
+  }
+  
+  /* Ensure modal takes full screen on mobile */
+  body.iframe-modal-open {
+    /* Mobile-specific full screen */
+    height: 100vh !important;
+    max-height: 100vh !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    /* Prevent any overflow */
+    overflow: hidden !important;
+  }
+}
+
+/* Landscape orientation optimizations */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .iframe-container {
+    /* Landscape mode - ensure iframe still reaches bottom */
+    height: calc(100vh - 48px) !important;
+    min-height: calc(100vh - 48px) !important;
+    max-height: calc(100vh - 48px) !important;
+  }
+  
+  .iframe-container iframe {
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+  }
+}
+
+/* Accessibility improvements */
+iframe[title] {
+  /* Ensure screen readers can identify iframe content */
+  speak: normal;
+}
+
+/* Loading state optimizations */
+.iframe-container .animate-spin {
+  /* Smooth animations on all devices */
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* High z-index for iframe modal to ensure it overlaps everything */
+.iframe-modal {
+  z-index: 9999 !important;
+}
+
+/* Ensure iframe modal header stays on top */
+.iframe-modal-header {
+  z-index: 10000 !important;
+}
+
+/* Mobile-specific touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch devices */
+  .iframe-container {
+    /* Optimize for touch */
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+  }
+  
+  .iframe-container iframe {
+    /* Touch-specific optimizations */
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    /* Prevent touch delay */
+    touch-action: manipulation;
+  }
+}
+
+/* Keyboard handling for mobile devices */
+@media screen and (max-height: 500px) {
+  /* When keyboard is likely visible */
+  .iframe-container {
+    /* Adjust for keyboard presence */
+    height: calc(100vh - 48px) !important;
+    min-height: calc(100vh - 48px) !important;
+  }
+  
+  .iframe-container iframe {
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+}
+
+/* Ensure no gaps or spacing issues */
+.iframe-container,
+.iframe-container iframe {
+  /* Remove any potential spacing */
+  padding: 0 !important;
+  margin: 0 !important;
+  /* Ensure exact fit */
+  box-sizing: border-box !important;
+}
+
+/* Fix for potential iOS Safari address bar issues */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari viewport height fix */
+  .iframe-container {
+    /* Use fixed pixel calculation instead of vh on iOS */
+    height: calc(100vh - 48px) !important;
+    min-height: calc(100vh - 48px) !important;
+    max-height: calc(100vh - 48px) !important;
+  }
+}
