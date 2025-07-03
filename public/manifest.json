@@ -27,11 +27,11 @@
   "protocol_handlers": [
     {
       "protocol": "tel",
-      "url": "tel:%s"
+      "url": "/?tel=%s"
     },
     {
       "protocol": "mailto", 
-      "url": "mailto:%s"
+      "url": "/?mailto=%s"
     }
   ],
   "share_target": {
@@ -50,7 +50,7 @@
       "tag": "quick-booking",
       "template": "quick-booking-template",
       "ms_ac_template": "adaptive-card.json",
-      "data": "/widget-data.json",
+      "data": "widget-data.json",
       "type": "application/json",
       "screenshots": [
         {
@@ -105,7 +105,7 @@
       "purpose": "any"
     },
     {
-      "src": "/logo.png", 
+      "src": "/logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
@@ -129,7 +129,7 @@
       "purpose": "maskable"
     },
     {
-      "src": "/logo.png", 
+      "src": "/logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "name": "Boka klassisk massage", 
+      "name": "Boka klassisk massage",
       "short_name": "Klassisk",
       "description": "Boka djupgående klassisk massage",
       "url": "/?category=klassisk",

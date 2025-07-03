@@ -27,13 +27,17 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
     });
   };
 
-  const handleAboutClick = () => {
+  const handleAboutClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     console.log('About clicked'); // Debug log
     navigate('/about');
     setTimeout(scrollToTop, 100);
   };
 
-  const handleBookClick = () => {
+  const handleBookClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     console.log('Book clicked, isHomePage:', isHomePage, 'activeTab:', activeTab); // Debug log
     if (isHomePage) {
       if (onTabChange) {
@@ -53,7 +57,9 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
     }
   };
 
-  const handleInfoClick = () => {
+  const handleInfoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     console.log('Info clicked, isHomePage:', isHomePage, 'activeTab:', activeTab); // Debug log
     if (isHomePage) {
       if (onTabChange) {
@@ -93,7 +99,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
 
   return (
     <motion.div 
-      className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50"
+      className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 bottom-navigation"
       initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{ 
@@ -105,23 +111,29 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
         {/* About */}
         <motion.button
           onClick={handleAboutClick}
-          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 cursor-pointer ${
+          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 cursor-pointer select-none ${
             isAboutPage 
               ? 'text-emerald-600 bg-emerald-50 border-t-2 border-emerald-600' 
               : 'text-gray-600 hover:text-emerald-600 hover:bg-gray-50'
           }`}
-          style={{ minHeight: '64px', minWidth: '48px' }}
+          style={{ 
+            minHeight: '64px', 
+            minWidth: '48px',
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation'
+          }}
           variants={navItemVariants}
           animate={isAboutPage ? "active" : "inactive"}
           whileTap={{ scale: 0.95 }}
+          type="button"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.1 }}
           >
-            <Users size={22} className="mb-1" />
+            <Users size={22} className="mb-1 pointer-events-none" />
           </motion.div>
-          <span className="text-xs font-medium">Om oss</span>
+          <span className="text-xs font-medium pointer-events-none">Om oss</span>
           
           <AnimatePresence>
             {isAboutPage && (
@@ -139,23 +151,29 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
         {/* Book */}
         <motion.button
           onClick={handleBookClick}
-          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 cursor-pointer ${
+          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 cursor-pointer select-none ${
             (isHomePage && activeTab === 'boka')
               ? 'text-emerald-600 bg-emerald-50 border-t-2 border-emerald-600' 
               : 'text-gray-600 hover:text-emerald-600 hover:bg-gray-50'
           }`}
-          style={{ minHeight: '64px', minWidth: '48px' }}
+          style={{ 
+            minHeight: '64px', 
+            minWidth: '48px',
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation'
+          }}
           variants={navItemVariants}
           animate={isHomePage && activeTab === 'boka' ? "active" : "inactive"}
           whileTap={{ scale: 0.95 }}
+          type="button"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.1 }}
           >
-            <Heart size={22} className="mb-1" />
+            <Heart size={22} className="mb-1 pointer-events-none" />
           </motion.div>
-          <span className="text-xs font-medium">Boka</span>
+          <span className="text-xs font-medium pointer-events-none">Boka</span>
           
           <AnimatePresence>
             {isHomePage && activeTab === 'boka' && (
@@ -173,23 +191,29 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
         {/* Info */}
         <motion.button
           onClick={handleInfoClick}
-          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 cursor-pointer ${
+          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 cursor-pointer select-none ${
             (isHomePage && activeTab === 'info')
               ? 'text-emerald-600 bg-emerald-50 border-t-2 border-emerald-600' 
               : 'text-gray-600 hover:text-emerald-600 hover:bg-gray-50'
           }`}
-          style={{ minHeight: '64px', minWidth: '48px' }}
+          style={{ 
+            minHeight: '64px', 
+            minWidth: '48px',
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation'
+          }}
           variants={navItemVariants}
           animate={isHomePage && activeTab === 'info' ? "active" : "inactive"}
           whileTap={{ scale: 0.95 }}
+          type="button"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.1 }}
           >
-            <Info size={22} className="mb-1" />
+            <Info size={22} className="mb-1 pointer-events-none" />
           </motion.div>
-          <span className="text-xs font-medium">Info</span>
+          <span className="text-xs font-medium pointer-events-none">Info</span>
           
           <AnimatePresence>
             {isHomePage && activeTab === 'info' && (
