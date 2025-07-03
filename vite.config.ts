@@ -10,7 +10,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpeg,jpg}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpeg,jpg,json}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -81,7 +81,9 @@ export default defineConfig({
           /^\/assets\//, // Asset files
           /^\/sw\.js$/, // Service worker
           /^\/manifest\.json$/, // Manifest
-          /^\/offline\.html$/ // Offline page itself
+          /^\/offline\.html$/, // Offline page itself
+          /^\/widget-data\.json$/, // Widget data
+          /^\/adaptive-card\.json$/ // Adaptive card
         ],
         // Include Swedish routes in precaching
         navigateFallbackAllowlist: [
@@ -101,7 +103,9 @@ export default defineConfig({
       },
       includeAssets: [
         'logo.png',
-        'offline.html'
+        'offline.html',
+        'widget-data.json',
+        'adaptive-card.json'
       ],
       manifest: {
         name: 'Massage Corner Sverige AB',
@@ -110,11 +114,68 @@ export default defineConfig({
         theme_color: '#059669',
         background_color: '#059669',
         display: 'standalone',
+        display_override: ['fullscreen', 'standalone', 'minimal-ui', 'browser'],
         orientation: 'portrait-primary',
         scope: '/',
         start_url: '/',
         categories: ['health', 'wellness', 'lifestyle', 'medical'],
         lang: 'sv',
+        edge_side_panel: {
+          preferred_width: 400
+        },
+        file_handlers: [
+          {
+            action: '/',
+            accept: {
+              'text/calendar': ['.ics'],
+              'application/pdf': ['.pdf']
+            }
+          }
+        ],
+        handle_links: 'preferred',
+        protocol_handlers: [
+          {
+            protocol: 'tel',
+            url: 'tel:%s'
+          },
+          {
+            protocol: 'mailto', 
+            url: 'mailto:%s'
+          }
+        ],
+        share_target: {
+          action: '/',
+          method: 'GET',
+          params: {
+            title: 'title',
+            text: 'text',
+            url: 'url'
+          }
+        },
+        widgets: [
+          {
+            name: 'Snabbbokning',
+            description: 'Boka massage snabbt',
+            tag: 'quick-booking',
+            template: 'quick-booking-template',
+            ms_ac_template: 'adaptive-card.json',
+            data: '/widget-data.json',
+            type: 'application/json',
+            screenshots: [
+              {
+                src: '/logo.png',
+                sizes: '192x192',
+                label: 'Massage Corner Widget'
+              }
+            ],
+            icons: [
+              {
+                src: '/logo.png',
+                sizes: '72x72'
+              }
+            ]
+          }
+        ],
         icons: [
           // Any purpose icons
           {
@@ -203,18 +264,6 @@ export default defineConfig({
             short_name: 'Klassisk',
             description: 'Boka djupgående klassisk massage',
             url: '/?category=klassisk',
-            icons: [
-              {
-                src: '/logo.png',
-                sizes: '96x96'
-              }
-            ]
-          },
-          {
-            name: 'Integritetspolicy',
-            short_name: 'Integritet',
-            description: 'Läs vår integritetspolicy',
-            url: '/integritetspolicy',
             icons: [
               {
                 src: '/logo.png',

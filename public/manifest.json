@@ -5,12 +5,68 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["fullscreen", "standalone", "minimal-ui"],
+  "display_override": ["fullscreen", "standalone", "minimal-ui", "browser"],
   "orientation": "portrait-primary",
   "theme_color": "#059669",
   "background_color": "#059669",
   "lang": "sv",
   "categories": ["health", "wellness", "lifestyle", "medical"],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "text/calendar": [".ics"],
+        "application/pdf": [".pdf"]
+      }
+    }
+  ],
+  "handle_links": "preferred",
+  "protocol_handlers": [
+    {
+      "protocol": "tel",
+      "url": "tel:%s"
+    },
+    {
+      "protocol": "mailto", 
+      "url": "mailto:%s"
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "widgets": [
+    {
+      "name": "Snabbbokning",
+      "description": "Boka massage snabbt",
+      "tag": "quick-booking",
+      "template": "quick-booking-template",
+      "ms_ac_template": "adaptive-card.json",
+      "data": "/widget-data.json",
+      "type": "application/json",
+      "screenshots": [
+        {
+          "src": "/logo.png",
+          "sizes": "192x192",
+          "label": "Massage Corner Widget"
+        }
+      ],
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "72x72"
+        }
+      ]
+    }
+  ],
   "icons": [
     {
       "src": "/logo.png",
