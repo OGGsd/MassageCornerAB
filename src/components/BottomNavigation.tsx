@@ -28,11 +28,13 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
   };
 
   const handleAboutClick = () => {
+    console.log('About clicked'); // Debug log
     navigate('/about');
     setTimeout(scrollToTop, 100);
   };
 
   const handleBookClick = () => {
+    console.log('Book clicked, isHomePage:', isHomePage, 'activeTab:', activeTab); // Debug log
     if (isHomePage) {
       if (onTabChange) {
         onTabChange('boka');
@@ -43,12 +45,16 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
       setTimeout(() => {
         scrollToTop();
         // Force tab change after navigation
+        if (onTabChange) {
+          onTabChange('boka');
+        }
         window.dispatchEvent(new CustomEvent('forceTabChange', { detail: 'boka' }));
       }, 50);
     }
   };
 
   const handleInfoClick = () => {
+    console.log('Info clicked, isHomePage:', isHomePage, 'activeTab:', activeTab); // Debug log
     if (isHomePage) {
       if (onTabChange) {
         onTabChange('info');
@@ -59,6 +65,9 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
       setTimeout(() => {
         scrollToTop();
         // Force tab change after navigation
+        if (onTabChange) {
+          onTabChange('info');
+        }
         window.dispatchEvent(new CustomEvent('forceTabChange', { detail: 'info' }));
       }, 50);
     }
@@ -96,10 +105,10 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
         {/* About */}
         <motion.button
           onClick={handleAboutClick}
-          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 ${
+          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 cursor-pointer ${
             isAboutPage 
               ? 'text-emerald-600 bg-emerald-50 border-t-2 border-emerald-600' 
-              : 'text-gray-600 hover:text-emerald-600'
+              : 'text-gray-600 hover:text-emerald-600 hover:bg-gray-50'
           }`}
           style={{ minHeight: '64px', minWidth: '48px' }}
           variants={navItemVariants}
@@ -130,10 +139,10 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
         {/* Book */}
         <motion.button
           onClick={handleBookClick}
-          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 ${
+          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 cursor-pointer ${
             (isHomePage && activeTab === 'boka')
               ? 'text-emerald-600 bg-emerald-50 border-t-2 border-emerald-600' 
-              : 'text-gray-600 hover:text-emerald-600'
+              : 'text-gray-600 hover:text-emerald-600 hover:bg-gray-50'
           }`}
           style={{ minHeight: '64px', minWidth: '48px' }}
           variants={navItemVariants}
@@ -164,10 +173,10 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
         {/* Info */}
         <motion.button
           onClick={handleInfoClick}
-          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 ${
+          className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-all duration-150 cursor-pointer ${
             (isHomePage && activeTab === 'info')
               ? 'text-emerald-600 bg-emerald-50 border-t-2 border-emerald-600' 
-              : 'text-gray-600 hover:text-emerald-600'
+              : 'text-gray-600 hover:text-emerald-600 hover:bg-gray-50'
           }`}
           style={{ minHeight: '64px', minWidth: '48px' }}
           variants={navItemVariants}
