@@ -1,0 +1,24 @@
+{
+  "quickBooking": {
+    "title": "Snabbbokning - Massage Corner",
+    "description": "Boka din massage snabbt och enkelt",
+    "actions": [
+      {
+        "type": "Action.OpenUrl",
+        "title": "Boka Medicinsk Massage",
+        "url": "/?category=medicinsk"
+      },
+      {
+        "type": "Action.OpenUrl", 
+        "title": "Boka Klassisk Massage",
+        "url": "/?category=klassisk"
+      },
+      {
+        "type": "Action.OpenUrl",
+        "title": "Ring Oss",
+        "url": "tel:0731759567"
+      }
+    ],
+    "lastUpdated": "2024-01-01T00:00:00Z"
+  }
+}

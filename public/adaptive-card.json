@@ -1,0 +1,75 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.3",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "/logo.png",
+                  "size": "Small",
+                  "style": "Person"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Massage Corner",
+                  "weight": "Bolder",
+                  "size": "Medium"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "Snabbbokning",
+                  "spacing": "None",
+                  "color": "Accent"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Boka din massage snabbt:",
+          "wrap": true,
+          "size": "Small"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Medicinsk Massage",
+      "url": "/?category=medicinsk"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Klassisk Massage", 
+      "url": "/?category=klassisk"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Ring Oss",
+      "url": "tel:0731759567"
+    }
+  ]
+}
