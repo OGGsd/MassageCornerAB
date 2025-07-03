@@ -244,7 +244,19 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
   return (
     <AnimatePresence>
       <motion.div 
-        className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex flex-col"
+        className="fixed inset-0 bg-black bg-opacity-50 flex flex-col iframe-modal"
+        style={{ 
+          zIndex: 999999,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100vw',
+          height: '100vh',
+          maxWidth: '100vw',
+          maxHeight: '100vh'
+        }}
         variants={modalVariants}
         initial="hidden"
         animate="visible"
@@ -252,7 +264,15 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
       >
         {/* Minimized Header with enhanced animation */}
         <motion.div 
-          className="bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-800 text-white px-4 py-2 flex items-center justify-between shadow-lg relative z-[10000] h-12 flex-shrink-0"
+          className="bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-800 text-white px-4 py-2 flex items-center justify-between shadow-lg relative iframe-modal-header"
+          style={{ 
+            zIndex: 1000000,
+            height: '48px',
+            minHeight: '48px',
+            maxHeight: '48px',
+            flexShrink: 0,
+            position: 'relative'
+          }}
           variants={headerVariants}
         >
           <div className="flex items-center min-w-0 flex-1">
@@ -329,7 +349,11 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
           style={{ 
             height: 'calc(100vh - 48px)',
             maxHeight: 'calc(100vh - 48px)',
-            minHeight: 'calc(100vh - 48px)'
+            minHeight: 'calc(100vh - 48px)',
+            width: '100%',
+            maxWidth: '100%',
+            position: 'relative',
+            zIndex: 999998
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -340,6 +364,7 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
             {isLoading && (
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center bg-white z-10"
+                style={{ zIndex: 999999 }}
                 variants={loadingVariants}
                 initial="hidden"
                 animate="visible"
@@ -384,6 +409,7 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
             {!isOnline && (
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center bg-white z-20 p-4"
+                style={{ zIndex: 1000000 }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
@@ -434,6 +460,7 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
             {hasError && isOnline && (
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center bg-white z-10 p-4"
+                style={{ zIndex: 999999 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -497,9 +524,13 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
                 height: '100%',
                 minHeight: '100%',
                 maxHeight: '100%',
+                width: '100%',
+                maxWidth: '100%',
                 // iOS Safari optimizations
                 WebkitOverflowScrolling: 'touch',
-                overflow: 'auto'
+                overflow: 'auto',
+                position: 'relative',
+                zIndex: 999997
               }}
               // Enhanced security sandbox for iOS compatibility
               sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"

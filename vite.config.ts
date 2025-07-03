@@ -116,6 +116,7 @@ export default defineConfig({
         categories: ['health', 'wellness', 'lifestyle', 'medical'],
         lang: 'sv',
         icons: [
+          // Any purpose icons
           {
             src: '/logo.png',
             sizes: '36x36',
@@ -138,25 +139,50 @@ export default defineConfig({
             src: '/logo.png',
             sizes: '96x96',
             type: 'image/png',
-            purpose: 'any maskable'
+            purpose: 'any'
           },
           {
             src: '/logo.png',
             sizes: '144x144',
             type: 'image/png',
-            purpose: 'any maskable'
+            purpose: 'any'
           },
           {
             src: '/logo.png',
             sizes: '192x192',
             type: 'image/png',
-            purpose: 'any maskable'
+            purpose: 'any'
           },
           {
             src: '/logo.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable'
+            purpose: 'any'
+          },
+          // Maskable purpose icons (separate entries)
+          {
+            src: '/logo.png',
+            sizes: '96x96',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: '/logo.png',
+            sizes: '144x144',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: '/logo.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: '/logo.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
           }
         ],
         shortcuts: [

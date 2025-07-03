@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CRITICAL: Maximum z-index for iframe modal - ALWAYS ON TOP */
+.iframe-modal {
+  z-index: 999999 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  /* Ensure it's above everything */
+  isolation: isolate;
+  /* Force new stacking context */
+  transform: translateZ(0);
+  /* Hardware acceleration */
+  will-change: transform;
+  /* Prevent any interference */
+  pointer-events: auto !important;
+}
+
+/* Ensure iframe modal header stays on top of everything */
+.iframe-modal-header {
+  z-index: 1000000 !important;
+  position: relative !important;
+  /* Force new stacking context */
+  isolation: isolate;
+  transform: translateZ(0);
+}
+
 /* Enhanced iframe modal styles for mobile optimization */
 body.iframe-modal-open {
   overflow: hidden !important;
@@ -13,15 +44,17 @@ body.iframe-modal-open {
   touch-action: none;
   /* Prevent any scrolling */
   overscroll-behavior: none;
+  /* Ensure modal is always visible */
+  z-index: 999998 !important;
 }
 
 /* Mobile-first iframe optimizations - Ensure iframe reaches bottom */
 .iframe-container {
   /* Ensure iframe container takes exact calculated space */
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  min-height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 100% !important;
   /* iOS Safari specific */
   -webkit-overflow-scrolling: touch;
   overflow: hidden; /* Container doesn't scroll, iframe does */
@@ -36,9 +69,11 @@ body.iframe-modal-open {
   -khtml-user-select: none;
   -ms-user-select: none;
   /* Ensure exact positioning */
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  /* High z-index but below modal overlay */
+  z-index: 999998 !important;
 }
 
 .iframe-container iframe {
@@ -67,6 +102,20 @@ body.iframe-modal-open {
   /* Ensure iframe content can scroll */
   overflow-y: auto !important;
   overflow-x: hidden !important;
+  /* Ensure iframe is below overlay elements but above background */
+  z-index: 999997 !important;
+  position: relative !important;
+}
+
+/* Override any potential z-index conflicts */
+.iframe-modal * {
+  /* Ensure all children respect the modal's z-index hierarchy */
+  position: relative;
+}
+
+/* Loading and error states - highest priority */
+.iframe-container .absolute.inset-0 {
+  z-index: 999999 !important;
 }
 
 /* iOS Safari specific iframe optimizations */
@@ -80,9 +129,9 @@ body.iframe-modal-open {
     /* Prevent rubber band scrolling */
     overscroll-behavior: none;
     /* Ensure exact positioning */
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
   
   .iframe-container iframe {
@@ -97,8 +146,8 @@ body.iframe-modal-open {
     /* Flex properties for iOS */
     flex: 1 1 100%;
     /* Ensure iframe reaches exact bottom */
-    position: relative;
-    display: block;
+    position: relative !important;
+    display: block !important;
   }
 }
 
@@ -164,8 +213,8 @@ body {
     min-height: calc(100vh - 48px) !important;
     max-height: calc(100vh - 48px) !important;
     /* Ensure no extra spacing */
-    padding: 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
   }
   
   .iframe-container iframe {
@@ -177,8 +226,8 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     /* Ensure exact positioning */
-    position: relative;
-    display: block;
+    position: relative !important;
+    display: block !important;
   }
   
   /* Ensure modal takes full screen on mobile */
@@ -221,16 +270,6 @@ iframe[title] {
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-}
-
-/* High z-index for iframe modal to ensure it overlaps everything */
-.iframe-modal {
-  z-index: 9999 !important;
-}
-
-/* Ensure iframe modal header stays on top */
-.iframe-modal-header {
-  z-index: 10000 !important;
 }
 
 /* Mobile-specific touch optimizations */
@@ -285,4 +324,27 @@ iframe[title] {
     min-height: calc(100vh - 48px) !important;
     max-height: calc(100vh - 48px) !important;
   }
+}
+
+/* Force iframe modal to be above everything else */
+.iframe-modal {
+  /* Nuclear option - ensure it's above everything */
+  z-index: 2147483647 !important; /* Maximum possible z-index */
+}
+
+/* Ensure no other elements can interfere */
+body.iframe-modal-open * {
+  /* Prevent any other element from going above the modal */
+  z-index: auto !important;
+}
+
+body.iframe-modal-open .iframe-modal,
+body.iframe-modal-open .iframe-modal * {
+  /* Restore z-index hierarchy within the modal */
+  z-index: inherit !important;
+}
+
+/* Final override for the modal itself */
+body.iframe-modal-open .iframe-modal {
+  z-index: 2147483647 !important;
 }
