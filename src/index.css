@@ -22,6 +22,13 @@
   will-change: transform;
   /* Prevent any interference */
   pointer-events: auto !important;
+  /* Display override for complete screen coverage */
+  display: block !important;
+  /* Override any display settings */
+  visibility: visible !important;
+  /* Force visibility */
+  opacity: 1 !important;
+  /* Force opacity */
 }
 
 /* Ensure iframe modal header stays on top of everything */
@@ -31,9 +38,12 @@
   /* Force new stacking context */
   isolation: isolate;
   transform: translateZ(0);
+  /* Display override */
+  display: flex !important;
+  visibility: visible !important;
 }
 
-/* Enhanced iframe modal styles for mobile optimization */
+/* Enhanced iframe modal styles for mobile optimization with display override */
 body.iframe-modal-open {
   overflow: hidden !important;
   position: fixed !important;
@@ -46,9 +56,11 @@ body.iframe-modal-open {
   overscroll-behavior: none;
   /* Ensure modal is always visible */
   z-index: 999998 !important;
+  /* Display override */
+  display: block !important;
 }
 
-/* Mobile-first iframe optimizations - Ensure iframe reaches bottom */
+/* Mobile-first iframe optimizations with display override - Ensure iframe reaches bottom */
 .iframe-container {
   /* Ensure iframe container takes exact calculated space */
   width: 100% !important;
@@ -74,6 +86,8 @@ body.iframe-modal-open {
   flex-direction: column !important;
   /* High z-index but below modal overlay */
   z-index: 999998 !important;
+  /* Display override */
+  visibility: visible !important;
 }
 
 .iframe-container iframe {
@@ -105,6 +119,9 @@ body.iframe-modal-open {
   /* Ensure iframe is below overlay elements but above background */
   z-index: 999997 !important;
   position: relative !important;
+  /* Display override */
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Override any potential z-index conflicts */
@@ -116,9 +133,12 @@ body.iframe-modal-open {
 /* Loading and error states - highest priority */
 .iframe-container .absolute.inset-0 {
   z-index: 999999 !important;
+  /* Display override */
+  display: flex !important;
+  visibility: visible !important;
 }
 
-/* iOS Safari specific iframe optimizations */
+/* iOS Safari specific iframe optimizations with display override */
 @supports (-webkit-touch-callout: none) {
   /* iOS Safari */
   .iframe-container {
@@ -132,6 +152,8 @@ body.iframe-modal-open {
     position: relative !important;
     display: flex !important;
     flex-direction: column !important;
+    /* Display override */
+    visibility: visible !important;
   }
   
   .iframe-container iframe {
@@ -148,10 +170,13 @@ body.iframe-modal-open {
     /* Ensure iframe reaches exact bottom */
     position: relative !important;
     display: block !important;
+    /* Display override */
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
-/* Enhanced iframe rendering for all platforms */
+/* Enhanced iframe rendering for all platforms with display override */
 iframe {
   border: none !important;
   outline: none !important;
@@ -169,9 +194,11 @@ iframe {
   width: 100%;
   /* Mobile optimization */
   max-width: 100%;
+  /* Display override */
+  visibility: visible !important;
 }
 
-/* VKWebView and TWA specific optimizations */
+/* VKWebView and TWA specific optimizations with display override */
 @media screen and (display-mode: standalone) {
   /* PWA/TWA mode optimizations */
   .iframe-container {
@@ -179,6 +206,9 @@ iframe {
     height: calc(100vh - 48px) !important;
     max-height: calc(100vh - 48px) !important;
     min-height: calc(100vh - 48px) !important;
+    /* Display override */
+    display: flex !important;
+    visibility: visible !important;
   }
   
   .iframe-container iframe {
@@ -189,6 +219,9 @@ iframe {
     height: 100% !important;
     max-height: 100% !important;
     min-height: 100% !important;
+    /* Display override */
+    display: block !important;
+    visibility: visible !important;
   }
   
   /* Hide any potential browser UI */
@@ -196,6 +229,8 @@ iframe {
     /* Ensure full screen usage in PWA mode */
     height: 100vh !important;
     max-height: 100vh !important;
+    /* Display override */
+    display: block !important;
   }
 }
 
@@ -205,7 +240,7 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Mobile viewport optimizations - Ensure iframe reaches bottom */
+/* Mobile viewport optimizations with display override - Ensure iframe reaches bottom */
 @media screen and (max-width: 768px) {
   .iframe-container {
     /* Mobile-specific optimizations - exact height calculations */
@@ -215,6 +250,9 @@ body {
     /* Ensure no extra spacing */
     padding: 0 !important;
     margin: 0 !important;
+    /* Display override */
+    display: flex !important;
+    visibility: visible !important;
   }
   
   .iframe-container iframe {
@@ -228,6 +266,8 @@ body {
     /* Ensure exact positioning */
     position: relative !important;
     display: block !important;
+    /* Display override */
+    visibility: visible !important;
   }
   
   /* Ensure modal takes full screen on mobile */
@@ -239,22 +279,30 @@ body {
     max-width: 100vw !important;
     /* Prevent any overflow */
     overflow: hidden !important;
+    /* Display override */
+    display: block !important;
   }
 }
 
-/* Landscape orientation optimizations */
+/* Landscape orientation optimizations with display override */
 @media screen and (orientation: landscape) and (max-height: 500px) {
   .iframe-container {
     /* Landscape mode - ensure iframe still reaches bottom */
     height: calc(100vh - 48px) !important;
     min-height: calc(100vh - 48px) !important;
     max-height: calc(100vh - 48px) !important;
+    /* Display override */
+    display: flex !important;
+    visibility: visible !important;
   }
   
   .iframe-container iframe {
     height: 100% !important;
     min-height: 100% !important;
     max-height: 100% !important;
+    /* Display override */
+    display: block !important;
+    visibility: visible !important;
   }
 }
 
@@ -290,18 +338,24 @@ iframe[title] {
   }
 }
 
-/* Keyboard handling for mobile devices */
+/* Keyboard handling for mobile devices with display override */
 @media screen and (max-height: 500px) {
   /* When keyboard is likely visible */
   .iframe-container {
     /* Adjust for keyboard presence */
     height: calc(100vh - 48px) !important;
     min-height: calc(100vh - 48px) !important;
+    /* Display override */
+    display: flex !important;
+    visibility: visible !important;
   }
   
   .iframe-container iframe {
     height: 100% !important;
     min-height: 100% !important;
+    /* Display override */
+    display: block !important;
+    visibility: visible !important;
   }
 }
 
@@ -315,7 +369,7 @@ iframe[title] {
   box-sizing: border-box !important;
 }
 
-/* Fix for potential iOS Safari address bar issues */
+/* Fix for potential iOS Safari address bar issues with display override */
 @supports (-webkit-touch-callout: none) {
   /* iOS Safari viewport height fix */
   .iframe-container {
@@ -323,13 +377,32 @@ iframe[title] {
     height: calc(100vh - 48px) !important;
     min-height: calc(100vh - 48px) !important;
     max-height: calc(100vh - 48px) !important;
+    /* Display override */
+    display: flex !important;
+    visibility: visible !important;
   }
 }
 
-/* Force iframe modal to be above everything else */
+/* Force iframe modal to be above everything else with display override */
 .iframe-modal {
   /* Nuclear option - ensure it's above everything */
   z-index: 2147483647 !important; /* Maximum possible z-index */
+  /* Complete display override */
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  /* Force positioning */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  /* Override any potential interference */
+  transform: none !important;
+  /* Ensure it covers everything */
+  background: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Ensure no other elements can interfere */
@@ -347,4 +420,60 @@ body.iframe-modal-open .iframe-modal * {
 /* Final override for the modal itself */
 body.iframe-modal-open .iframe-modal {
   z-index: 2147483647 !important;
+  /* Complete display override */
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Navigation bar fixes */
+.bottom-navigation {
+  /* Ensure navigation is clickable and responsive */
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  /* Ensure proper z-index below iframe modal */
+  z-index: 50 !important;
+}
+
+.bottom-navigation button {
+  /* Ensure buttons are clickable */
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  /* Prevent text selection */
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  /* Optimize touch response */
+  touch-action: manipulation !important;
+  /* Ensure proper display */
+  display: flex !important;
+  /* Remove any potential interference */
+  position: relative !important;
+}
+
+/* Fix for navigation button hover states */
+.bottom-navigation button:hover {
+  /* Ensure hover states work */
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.bottom-navigation button:active {
+  /* Ensure active states work */
+  transform: scale(0.95) !important;
+}
+
+/* Ensure navigation text is always visible */
+.bottom-navigation span {
+  /* Prevent text from being hidden */
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix for navigation icons */
+.bottom-navigation svg {
+  /* Ensure icons are visible and responsive */
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: none !important; /* Icons shouldn't capture clicks */
 }

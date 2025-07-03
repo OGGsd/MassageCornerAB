@@ -42,6 +42,7 @@ const MassageBookingPage: React.FC = () => {
   // Listen for forced tab changes from navigation
   useEffect(() => {
     const handleForceTabChange = (event: CustomEvent) => {
+      console.log('Force tab change event:', event.detail); // Debug log
       if (event.detail === 'info') {
         setActiveTab('info');
       } else if (event.detail === 'boka') {
@@ -52,6 +53,12 @@ const MassageBookingPage: React.FC = () => {
     window.addEventListener('forceTabChange', handleForceTabChange as EventListener);
     return () => window.removeEventListener('forceTabChange', handleForceTabChange as EventListener);
   }, []);
+
+  // Handle tab changes
+  const handleTabChange = (tab: 'boka' | 'info') => {
+    console.log('Tab change requested:', tab, 'current:', activeTab); // Debug log
+    setActiveTab(tab);
+  };
 
   // Massage service categories with real data
   const serviceCategories: ServiceCategory[] = [
@@ -317,6 +324,8 @@ const MassageBookingPage: React.FC = () => {
     }
   };
 
+  console.log('Current activeTab:', activeTab); // Debug log
+
   if (activeTab === 'info') {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -325,7 +334,7 @@ const MassageBookingPage: React.FC = () => {
         </div>
         <BottomNavigation 
           activeTab={activeTab} 
-          onTabChange={setActiveTab}
+          onTabChange={handleTabChange}
         />
       </div>
     );
@@ -498,7 +507,7 @@ const MassageBookingPage: React.FC = () => {
         {/* Bottom Navigation */}
         <BottomNavigation 
           activeTab={activeTab} 
-          onTabChange={setActiveTab}
+          onTabChange={handleTabChange}
         />
       </motion.div>
 
