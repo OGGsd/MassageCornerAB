@@ -103,6 +103,7 @@ export default defineConfig({
       },
       includeAssets: [
         'logo.png',
+        'Favicon/1024x1024.png',
         'offline.html',
         'widget-data.json',
         'adaptive-card.json'
@@ -220,6 +221,12 @@ export default defineConfig({
             type: 'image/png',
             purpose: 'any'
           },
+          {
+            src: '/Favicon/1024x1024.png',
+            sizes: '1024x1024',
+            type: 'image/png',
+            purpose: 'any'
+          },
           // Maskable purpose icons (separate entries)
           {
             src: '/logo.png',
@@ -242,6 +249,12 @@ export default defineConfig({
           {
             src: '/logo.png',
             sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: '/Favicon/1024x1024.png',
+            sizes: '1024x1024',
             type: 'image/png',
             purpose: 'maskable'
           }
