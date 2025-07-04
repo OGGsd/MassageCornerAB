@@ -103,6 +103,15 @@ export default defineConfig({
       },
       includeAssets: [
         'logo.png',
+        'Favicon/favicon-16x16.png',
+        'Favicon/favicon-32x32.png',
+        'Favicon/favicon-96x96.png',
+        'Favicon/apple-touch-icon.png',
+        'Favicon/favicon-192x192.png',
+        'Favicon/favicon-512x512.png',
+        'Favicon/1024x1024.png',
+        'Favicon/mstile-150x150.png',
+        'Favicon/safari-pinned-tab.svg',
         'offline.html',
         'widget-data.json',
         'adaptive-card.json'
@@ -179,69 +188,76 @@ export default defineConfig({
         icons: [
           // Any purpose icons
           {
-            src: '/logo.png',
-            sizes: '36x36',
+            src: '/Favicon/favicon-16x16.png',
+            sizes: '16x16',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/logo.png',
-            sizes: '48x48',
+            src: '/Favicon/favicon-32x32.png',
+            sizes: '32x32',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/logo.png',
-            sizes: '72x72',
-            type: 'image/png',
-            purpose: 'any'
-          },
-          {
-            src: '/logo.png',
+            src: '/Favicon/favicon-96x96.png',
             sizes: '96x96',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/logo.png',
-            sizes: '144x144',
+            src: '/Favicon/apple-touch-icon.png',
+            sizes: '180x180',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/logo.png',
+            src: '/Favicon/favicon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/logo.png',
+            src: '/Favicon/favicon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any'
           },
-          // Maskable purpose icons (separate entries)
           {
-            src: '/logo.png',
+            src: '/Favicon/1024x1024.png',
+            sizes: '1024x1024',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          
+          // Maskable purpose icons (separate entries for adaptive icons)
+          {
+            src: '/Favicon/favicon-96x96.png',
             sizes: '96x96',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/logo.png',
-            sizes: '144x144',
+            src: '/Favicon/apple-touch-icon.png',
+            sizes: '180x180',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/logo.png',
+            src: '/Favicon/favicon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/logo.png',
+            src: '/Favicon/favicon-512x512.png',
             sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: '/Favicon/1024x1024.png',
+            sizes: '1024x1024',
             type: 'image/png',
             purpose: 'maskable'
           }
@@ -254,7 +270,7 @@ export default defineConfig({
             url: '/?category=medicinsk',
             icons: [
               {
-                src: '/logo.png',
+                src: '/Favicon/favicon-96x96.png',
                 sizes: '96x96'
               }
             ]
@@ -266,7 +282,7 @@ export default defineConfig({
             url: '/?category=klassisk',
             icons: [
               {
-                src: '/logo.png',
+                src: '/Favicon/favicon-96x96.png',
                 sizes: '96x96'
               }
             ]
@@ -278,7 +294,7 @@ export default defineConfig({
             url: 'tel:0731759567',
             icons: [
               {
-                src: '/logo.png',
+                src: '/Favicon/favicon-96x96.png',
                 sizes: '96x96'
               }
             ]
