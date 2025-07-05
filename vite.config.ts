@@ -103,26 +103,36 @@ export default defineConfig({
       },
       includeAssets: [
         'logo.png',
-        'favicon.ico',
-        'favicon-16x16.png',
-        'favicon-32x32.png',
-        'favicon-96x96.png',
+        'Olga.png',
+        'Favicon/favicon.ico',
+        'Favicon/favicon-16x16.png',
+        'Favicon/favicon-32x32.png',
+        'Favicon/favicon-96x96.png',
+        'Favicon/apple-icon-57x57.png',
+        'Favicon/apple-icon-60x60.png',
+        'Favicon/apple-icon-72x72.png',
+        'Favicon/apple-icon-76x76.png',
+        'Favicon/apple-icon-114x114.png',
+        'Favicon/apple-icon-120x120.png',
+        'Favicon/apple-icon-144x144.png',
+        'Favicon/apple-icon-152x152.png',
+        'Favicon/apple-icon-180x180.png',
+        'Favicon/apple-icon-precomposed.png',
+        'Favicon/android-icon-36x36.png',
+        'Favicon/android-icon-48x48.png',
+        'Favicon/android-icon-72x72.png',
+        'Favicon/android-icon-96x96.png',
+        'Favicon/android-icon-144x144.png',
+        'Favicon/android-icon-192x192.png',
+        'Favicon/ms-icon-70x70.png',
+        'Favicon/ms-icon-144x144.png',
+        'Favicon/ms-icon-150x150.png',
+        'Favicon/ms-icon-310x310.png',
+        'Favicon/safari-pinned-tab.svg',
+        'Favicon/1024x1024.png',
         'apple-touch-icon.png',
-        'apple-touch-icon-57x57.png',
-        'apple-touch-icon-60x60.png',
-        'apple-touch-icon-72x72.png',
-        'apple-touch-icon-76x76.png',
-        'apple-touch-icon-114x114.png',
-        'apple-touch-icon-120x120.png',
-        'apple-touch-icon-144x144.png',
         'apple-touch-icon-152x152.png', 
-        'apple-touch-icon-167x167.png',
-        'apple-touch-icon-180x180.png',
         'apple-touch-icon-1024x1024.png',
-        'android-chrome-192x192.png',
-        'android-chrome-512x512.png',
-        'mstile-150x150.png',
-        'safari-pinned-tab.svg',
         'offline.html',
         'widget-data.json',
         'adaptive-card.json'
@@ -199,43 +209,43 @@ export default defineConfig({
         icons: [
           // Any purpose icons
           {
-            src: '/favicon-16x16.png',
+            src: '/Favicon/favicon-16x16.png',
             sizes: '16x16',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/favicon-32x32.png',
+            src: '/Favicon/favicon-32x32.png',
             sizes: '32x32',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/favicon-96x96.png',
+            src: '/Favicon/favicon-96x96.png',
             sizes: '96x96',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/apple-touch-icon-152x152.png',
+            src: '/Favicon/apple-icon-152x152.png',
             sizes: '152x152',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/android-chrome-192x192.png',
+            src: '/Favicon/android-icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/android-chrome-512x512.png',
+            src: '/Favicon/1024x1024.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/apple-touch-icon-1024x1024.png',
+            src: '/Favicon/1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png',
             purpose: 'any'
@@ -243,25 +253,25 @@ export default defineConfig({
           
           // Maskable purpose icons (separate entries for adaptive icons)
           {
-            src: '/apple-touch-icon-152x152.png',
+            src: '/Favicon/apple-icon-152x152.png',
             sizes: '152x152',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/android-chrome-192x192.png',
+            src: '/Favicon/android-icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/android-chrome-512x512.png',
+            src: '/Favicon/1024x1024.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/apple-touch-icon-1024x1024.png',
+            src: '/Favicon/1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png',
             purpose: 'maskable'
@@ -275,7 +285,7 @@ export default defineConfig({
             url: '/?category=medicinsk',
             icons: [
               {
-                src: '/favicon-96x96.png',
+                src: '/Favicon/android-icon-96x96.png',
                 sizes: '96x96'
               }
             ]
@@ -287,7 +297,7 @@ export default defineConfig({
             url: '/?category=klassisk',
             icons: [
               {
-                src: '/favicon-96x96.png',
+                src: '/Favicon/android-icon-96x96.png',
                 sizes: '96x96'
               }
             ]
@@ -299,7 +309,7 @@ export default defineConfig({
             url: 'tel:0731759567',
             icons: [
               {
-                src: '/favicon-96x96.png',
+                src: '/Favicon/android-icon-96x96.png',
                 sizes: '96x96'
               }
             ]
