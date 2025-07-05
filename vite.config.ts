@@ -103,9 +103,44 @@ export default defineConfig({
       },
       includeAssets: [
         'logo.png',
-        'Favicon/152x152.png',
-        'Favicon/192x192.png',
-        'Favicon/512x512.png',
+        'Favicon/favicon.ico',
+        'Favicon/favicon-16x16.png',
+        'Favicon/favicon-32x32.png',
+        'Favicon/favicon-48x48.png',
+        'Favicon/favicon-64x64.png',
+        'Favicon/favicon-96x96.png',
+        'Favicon/favicon-128x128.png',
+        'Favicon/favicon-256x256.png',
+        'Favicon/favicon-384x384.png',
+        'Favicon/favicon-512x512.png',
+        'Favicon/apple-icon-57x57.png',
+        'Favicon/apple-icon-60x60.png',
+        'Favicon/apple-icon-72x72.png',
+        'Favicon/apple-icon-76x76.png',
+        'Favicon/apple-icon-114x114.png',
+        'Favicon/apple-icon-120x120.png',
+        'Favicon/apple-icon-144x144.png',
+        'Favicon/apple-icon-152x152.png',
+        'Favicon/apple-icon-180x180.png',
+        'Favicon/apple-icon.png',
+        'Favicon/apple-icon-precomposed.png',
+        'Favicon/android-icon-36x36.png',
+        'Favicon/android-icon-48x48.png',
+        'Favicon/android-icon-72x72.png',
+        'Favicon/android-icon-96x96.png',
+        'Favicon/android-icon-144x144.png',
+        'Favicon/android-icon-192x192.png',
+        'Favicon/android-chrome-256x256.png',
+        'Favicon/android-chrome-384x384.png',
+        'Favicon/android-chrome-512x512.png',
+        'Favicon/ms-icon-70x70.png',
+        'Favicon/ms-icon-144x144.png',
+        'Favicon/ms-icon-150x150.png',
+        'Favicon/ms-icon-310x310.png',
+        'Favicon/mstile-270x270.png',
+        'Favicon/mstile-310x150.png',
+        'Favicon/mstile-310x310.png',
+        'Favicon/safari-pinned-tab.svg',
         'Favicon/1024x1024.png',
         'offline.html',
         'widget-data.json',
@@ -201,13 +236,13 @@ export default defineConfig({
             purpose: 'any'
           },
           {
-            src: '/Favicon/apple-touch-icon.png',
+            src: '/Favicon/apple-icon-180x180.png',
             sizes: '180x180',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/favicon-192x192.png',
+            src: '/Favicon/android-icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any'
@@ -233,13 +268,13 @@ export default defineConfig({
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/apple-touch-icon.png',
+            src: '/Favicon/apple-icon-180x180.png',
             sizes: '180x180',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/favicon-192x192.png',
+            src: '/Favicon/android-icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable'
@@ -265,7 +300,7 @@ export default defineConfig({
             url: '/?category=medicinsk',
             icons: [
               {
-                src: '/Favicon/favicon-96x96.png',
+                src: '/Favicon/android-icon-96x96.png',
                 sizes: '96x96'
               }
             ]
@@ -277,7 +312,7 @@ export default defineConfig({
             url: '/?category=klassisk',
             icons: [
               {
-                src: '/Favicon/favicon-96x96.png',
+                src: '/Favicon/android-icon-96x96.png',
                 sizes: '96x96'
               }
             ]
@@ -289,7 +324,7 @@ export default defineConfig({
             url: 'tel:0731759567',
             icons: [
               {
-                src: '/Favicon/favicon-96x96.png',
+                src: '/Favicon/android-icon-96x96.png',
                 sizes: '96x96'
               }
             ]

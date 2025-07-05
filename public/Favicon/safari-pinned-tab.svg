@@ -1,7 +1,5 @@
 <!-- Safari Pinned Tab SVG - This would be an SVG file for Safari pinned tabs -->
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
-  <g fill="#059669">
-    <circle cx="512" cy="512" r="480" fill="#059669"/>
-    <text x="512" y="580" font-family="Arial, sans-serif" font-size="400" font-weight="bold" text-anchor="middle" fill="white">MC</text>
-  </g>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<path fill="#059669" d="M512 0C229.2 0 0 229.2 0 512s229.2 512 512 512 512-229.2 512-512S794.8 0 512 0zm0 896c-212.1 0-384-171.9-384-384S299.9 128 512 128s384 171.9 384 384-171.9 384-384 384z"/>
+<path fill="#059669" d="M512 256c-141.4 0-256 114.6-256 256s114.6 256 256 256 256-114.6 256-256-114.6-256-256-256zm0 384c-70.7 0-128-57.3-128-128s57.3-128 128-128 128 57.3 128 128-57.3 128-128 128z"/>
 </svg>
