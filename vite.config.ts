@@ -103,15 +103,10 @@ export default defineConfig({
       },
       includeAssets: [
         'logo.png',
-        'Favicon/favicon-16x16.png',
-        'Favicon/favicon-32x32.png',
-        'Favicon/favicon-96x96.png',
-        'Favicon/apple-touch-icon.png',
-        'Favicon/favicon-192x192.png',
-        'Favicon/favicon-512x512.png',
+        'Favicon/152x152.png',
+        'Favicon/192x192.png',
+        'Favicon/512x512.png',
         'Favicon/1024x1024.png',
-        'Favicon/mstile-150x150.png',
-        'Favicon/safari-pinned-tab.svg',
         'offline.html',
         'widget-data.json',
         'adaptive-card.json'

@@ -17,13 +17,21 @@
 ## Manual Creation Checklist
 
 ### Critical Sizes (Must Have):
-- [ ] favicon.ico (16x16, 32x32, 48x48 combined)
 - [ ] 1024x1024.png (Apple Store Connect - CRITICAL)
-- [ ] 180x180.png (Apple Touch Icon)
+- [ ] 152x152.png (Apple iPad - CRITICAL)
 - [ ] 192x192.png (Android Chrome)
 - [ ] 512x512.png (Android Chrome Large)
-- [ ] 32x32.png (Browser Tab)
-- [ ] 16x16.png (Browser Tab Small)
+
+### PWA Builder Requirements:
+- [ ] 152x152.png (both 'any' and 'maskable' purpose)
+- [ ] 192x192.png (both 'any' and 'maskable' purpose) 
+- [ ] 512x512.png (both 'any' and 'maskable' purpose)
+- [ ] 1024x1024.png (both 'any' and 'maskable' purpose)
+
+### Apple Distribution Requirements:
+- [ ] 1024x1024.png (App Store Connect - MANDATORY)
+- [ ] 152x152.png (iPad Retina displays)
+- [ ] 512x512.png (Large displays and splash screens)
 
 ### Apple Ecosystem:
 - [ ] 57x57.png (iPhone iOS 6 and prior)
