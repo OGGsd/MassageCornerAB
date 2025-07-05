@@ -1,0 +1,6 @@
+<!-- Standard ICO favicon - This would be a multi-size ICO file containing 16x16, 32x32, and 48x48 PNG images
+     REQUIREMENTS:
+     - ICO format with multiple embedded sizes
+     - Contains 16x16, 32x32, 48x48 PNG images
+     - Fallback for older browsers
+     - Must be created from your logo.png -->

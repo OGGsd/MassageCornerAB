@@ -32,9 +32,9 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
 
   useEffect(() => {
     // Prevent body scroll when iframe modal is open
-    document.body.classList.add('iframe-modal-open');
-    
-    // iOS Safari specific: Prevent zoom on input focus
+    const vh = window.innerHeight; 
+    const headerHeight = 48; // Only subtract header height
+    const availableHeight = vh - headerHeight; // NO navigation space subtracted
     const viewport = document.querySelector('meta[name=viewport]');
     const originalContent = viewport?.getAttribute('content');
     if (viewport) {
@@ -51,9 +51,9 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
 
     // Calculate and set proper heights
     const updateHeights = () => {
-      const vh = window.innerHeight;
-      const headerHeight = 48; // Minimal header height
-      const availableHeight = vh - headerHeight;
+      const vh = window.innerHeight; 
+      const headerHeight = 48; // Only subtract header height
+      const availableHeight = vh - headerHeight; // NO navigation space subtracted
       
       if (containerRef.current) {
         containerRef.current.style.height = `${availableHeight}px`;
@@ -347,7 +347,7 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
           className="flex-1 relative bg-white overflow-hidden iframe-container"
           onTouchStart={handleTouchStart}
           style={{ 
-            height: 'calc(100vh - 48px)',
+            height: 'calc(100vh - 48px)', // Only subtract header, NOT navigation
             maxHeight: 'calc(100vh - 48px)',
             minHeight: 'calc(100vh - 48px)',
             width: '100%',
