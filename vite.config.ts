@@ -103,6 +103,9 @@ export default defineConfig({
       },
       includeAssets: [
         'logo.png',
+        'apple-touch-icon.png',
+        'apple-touch-icon-152x152.png', 
+        'apple-touch-icon-1024x1024.png',
         'Favicon/favicon.ico',
         'Favicon/favicon-16x16.png',
         'Favicon/favicon-32x32.png',

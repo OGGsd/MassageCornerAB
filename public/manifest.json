@@ -105,13 +105,13 @@
       "purpose": "maskable"
     },
     {
-      "src": "/Favicon/1024x1024.png", 
+      "src": "/apple-touch-icon-1024x1024.png", 
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Favicon/1024x1024.png",
+      "src": "/apple-touch-icon-1024x1024.png",
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "maskable"
