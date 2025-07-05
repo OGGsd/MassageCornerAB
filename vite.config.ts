@@ -103,17 +103,44 @@ export default defineConfig({
       },
       includeAssets: [
         'logo.png',
+        'Olga.png',
+        // Core favicon files
         'Favicon/favicon.ico',
         'Favicon/favicon-16x16.png',
         'Favicon/favicon-32x32.png',
         'Favicon/favicon-96x96.png',
+        // Apple Touch Icons - Complete Set
+        'Favicon/apple-icon-57x57.png',
+        'Favicon/apple-icon-60x60.png',
+        'Favicon/apple-icon-72x72.png',
+        'Favicon/apple-icon-76x76.png',
+        'Favicon/apple-icon-114x114.png',
+        'Favicon/apple-icon-120x120.png',
+        'Favicon/apple-icon-144x144.png',
         'Favicon/apple-icon-152x152.png',
         'Favicon/apple-icon-180x180.png',
-        'Favicon/android-icon-192x192.png',
+        'Favicon/apple-icon-precomposed.png',
+        'Favicon/apple-icon.png',
+        // Android Chrome Icons - Complete Set
+        'Favicon/android-icon-36x36.png',
+        'Favicon/android-icon-48x48.png',
+        'Favicon/android-icon-72x72.png',
+        'Favicon/android-icon-96x96.png',
         'Favicon/android-icon-144x144.png',
-        'Favicon/512x512.png',
-        'Favicon/1024x1024.png',
+        'Favicon/android-icon-192x192.png',
+        // Microsoft Tiles - Complete Set
+        'Favicon/ms-icon-70x70.png',
+        'Favicon/ms-icon-144x144.png',
+        'Favicon/ms-icon-150x150.png',
+        'Favicon/ms-icon-310x310.png',
+        // Special files
         'Favicon/safari-pinned-tab.svg',
+        'Favicon/1024x1024.png',
+        // Root level Apple icons
+        'apple-touch-icon.png',
+        'apple-touch-icon-152x152.png', 
+        'apple-touch-icon-1024x1024.png',
+        // Other assets
         'offline.html',
         'widget-data.json',
         'adaptive-card.json'
@@ -220,7 +247,7 @@ export default defineConfig({
             purpose: 'any'
           },
           {
-            src: '/Favicon/512x512.png',
+            src: '/Favicon/1024x1024.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any'
@@ -246,7 +273,7 @@ export default defineConfig({
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/512x512.png',
+            src: '/Favicon/1024x1024.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
