@@ -69,6 +69,12 @@
   ],
   "icons": [
     {
+      "src": "/Favicon/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
       "src": "/Favicon/favicon-16x16.png",
       "sizes": "16x16",
       "type": "image/png",
@@ -81,13 +87,67 @@
       "purpose": "any"
     },
     {
+      "src": "/Favicon/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
       "src": "/Favicon/favicon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Favicon/apple-touch-icon.png",
+      "src": "/Favicon/favicon-114x114.png",
+      "sizes": "114x114",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-120x120.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-167x167.png",
+      "sizes": "167x167",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-180x180.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
@@ -95,6 +155,18 @@
     {
       "src": "/Favicon/favicon-192x192.png",
       "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Favicon/favicon-384x384.png",
+      "sizes": "384x384",
       "type": "image/png",
       "purpose": "any"
     },
@@ -110,6 +182,19 @@
       "type": "image/png",
       "purpose": "any"
     },
+    
+    {
+      "src": "/Favicon/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/Favicon/favicon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
     {
       "src": "/Favicon/favicon-96x96.png",
       "sizes": "96x96",
@@ -117,7 +202,19 @@
       "purpose": "maskable"
     },
     {
-      "src": "/Favicon/apple-touch-icon.png",
+      "src": "/Favicon/favicon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/Favicon/favicon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/Favicon/favicon-180x180.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "maskable"
@@ -125,6 +222,18 @@
     {
       "src": "/Favicon/favicon-192x192.png",
       "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/Favicon/favicon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/Favicon/favicon-384x384.png",
+      "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable"
     },
