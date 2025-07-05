@@ -51,9 +51,9 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
 
     // Calculate and set proper heights
     const updateHeights = () => {
-      const vh = window.innerHeight;
-      const headerHeight = 48; // Minimal header height
-      const availableHeight = vh - headerHeight;
+      const vh = window.innerHeight; 
+      const headerHeight = 48; // Only subtract header height
+      const availableHeight = vh - headerHeight; // NO navigation space subtracted
       
       if (containerRef.current) {
         containerRef.current.style.height = `${availableHeight}px`;
