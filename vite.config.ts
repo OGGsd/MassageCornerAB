@@ -103,20 +103,17 @@ export default defineConfig({
       },
       includeAssets: [
         'logo.png',
+        'favicon.ico',
+        'favicon-16x16.png',
+        'favicon-32x32.png',
+        'favicon-96x96.png',
         'apple-touch-icon.png',
         'apple-touch-icon-152x152.png', 
         'apple-touch-icon-1024x1024.png',
-        'Favicon/favicon.ico',
-        'Favicon/favicon-16x16.png',
-        'Favicon/favicon-32x32.png',
-        'Favicon/favicon-96x96.png',
-        'Favicon/apple-icon-152x152.png',
-        'Favicon/apple-icon-180x180.png',
-        'Favicon/android-icon-192x192.png',
-        'Favicon/android-icon-144x144.png',
-        'Favicon/512x512.png',
-        'Favicon/1024x1024.png',
-        'Favicon/safari-pinned-tab.svg',
+        'android-chrome-192x192.png',
+        'android-chrome-512x512.png',
+        'mstile-150x150.png',
+        'safari-pinned-tab.svg',
         'offline.html',
         'widget-data.json',
         'adaptive-card.json'
@@ -193,43 +190,43 @@ export default defineConfig({
         icons: [
           // Any purpose icons
           {
-            src: '/Favicon/favicon-16x16.png',
+            src: '/favicon-16x16.png',
             sizes: '16x16',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/favicon-32x32.png',
+            src: '/favicon-32x32.png',
             sizes: '32x32',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/favicon-96x96.png',
+            src: '/favicon-96x96.png',
             sizes: '96x96',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/apple-icon-152x152.png',
+            src: '/apple-touch-icon-152x152.png',
             sizes: '152x152',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/android-icon-192x192.png',
+            src: '/android-chrome-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/512x512.png',
+            src: '/android-chrome-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/1024x1024.png',
+            src: '/apple-touch-icon-1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png',
             purpose: 'any'
@@ -237,25 +234,25 @@ export default defineConfig({
           
           // Maskable purpose icons (separate entries for adaptive icons)
           {
-            src: '/Favicon/apple-icon-152x152.png',
+            src: '/apple-touch-icon-152x152.png',
             sizes: '152x152',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/android-icon-192x192.png',
+            src: '/android-chrome-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/512x512.png',
+            src: '/android-chrome-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/1024x1024.png',
+            src: '/apple-touch-icon-1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png',
             purpose: 'maskable'
@@ -269,7 +266,7 @@ export default defineConfig({
             url: '/?category=medicinsk',
             icons: [
               {
-                src: '/Favicon/android-icon-96x96.png',
+                src: '/favicon-96x96.png',
                 sizes: '96x96'
               }
             ]
@@ -281,7 +278,7 @@ export default defineConfig({
             url: '/?category=klassisk',
             icons: [
               {
-                src: '/Favicon/android-icon-96x96.png',
+                src: '/favicon-96x96.png',
                 sizes: '96x96'
               }
             ]
@@ -293,7 +290,7 @@ export default defineConfig({
             url: 'tel:0731759567',
             icons: [
               {
-                src: '/Favicon/android-icon-96x96.png',
+                src: '/favicon-96x96.png',
                 sizes: '96x96'
               }
             ]
