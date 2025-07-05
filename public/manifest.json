@@ -69,19 +69,19 @@
   ],
   "icons": [
     {
-      "src": "/Favicon/152x152.png",
+      "src": "/Favicon/apple-icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Favicon/192x192.png",
+      "src": "/Favicon/android-icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Favicon/512x512.png",
+      "src": "/Favicon/favicon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
@@ -94,19 +94,19 @@
     },
     
     {
-      "src": "/Favicon/152x152.png",
+      "src": "/Favicon/apple-icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/Favicon/192x192.png",
+      "src": "/Favicon/android-icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/Favicon/512x512.png",
+      "src": "/Favicon/favicon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -126,7 +126,7 @@
       "url": "/?category=medicinsk",
       "icons": [
         {
-          "src": "/Favicon/favicon-96x96.png",
+          "src": "/Favicon/android-icon-96x96.png",
           "sizes": "96x96"
         }
       ]
@@ -138,7 +138,7 @@
       "url": "/?category=klassisk",
       "icons": [
         {
-          "src": "/Favicon/favicon-96x96.png",
+          "src": "/Favicon/android-icon-96x96.png",
           "sizes": "96x96"
         }
       ]
@@ -150,7 +150,7 @@
       "url": "tel:0731759567",
       "icons": [
         {
-          "src": "/Favicon/favicon-96x96.png",
+          "src": "/Favicon/android-icon-96x96.png",
           "sizes": "96x96"
         }
       ]
