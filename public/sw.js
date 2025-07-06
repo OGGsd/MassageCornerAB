@@ -1,38 +1,24 @@
 // Industry-Leading Service Worker - PWA Builder Optimized
+import { precacheAndRoute } from 'workbox-precaching';
+
 const CACHE_NAME = 'massage-corner-v1.0.0';
 const OFFLINE_URL = '/offline.html';
 
-// Critical resources for immediate caching
-const CRITICAL_RESOURCES = [
-  '/',
-  '/index.html',
-  '/offline.html',
-  '/manifest.json',
-  '/logo.png',
-  '/Olga.png',
-  // Critical favicon files
-  '/Favicon/favicon.ico',
-  '/Favicon/android-icon-192x192.png',
-  '/Favicon/apple-icon-152x152.png',
-  '/apple-touch-icon-1024x1024.png'
-];
+// Precache and route files using Workbox
+precacheAndRoute(self.__WB_MANIFEST);
 
-// Install event - Cache critical resources
+// Install event - Skip waiting for immediate activation
 self.addEventListener('install', (event) => {
   console.log('Service Worker installing...');
   
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('Caching critical resources');
-        return cache.addAll(CRITICAL_RESOURCES);
-      })
       .then(() => {
-        console.log('Critical resources cached successfully');
+        console.log('Service Worker installed successfully');
         return self.skipWaiting();
       })
       .catch((error) => {
-        console.error('Failed to cache critical resources:', error);
+        console.error('Failed to install service worker:', error);
       })
   );
 });
