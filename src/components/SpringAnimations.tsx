@@ -131,36 +131,6 @@ export const FloatingText: React.FC<{
 };
 
 // Bouncing logo component
-export const BouncingLogo: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className = '' }) => {
-  const [springs, api] = useSpring(() => ({
-    scale: 1,
-    rotate: 0,
-    config: { tension: 300, friction: 8 }
-  }));
-
-  const handleClick = () => {
-    api.start({
-      scale: [1, 1.2, 1],
-      rotate: [0, 360, 720],
-      config: { tension: 200, friction: 12 }
-    });
-  };
-
-  return (
-    <animated.div
-      style={springs}
-      className={`cursor-pointer ${className}`}
-      onClick={handleClick}
-    >
-      {children}
-    </animated.div>
-  );
-};
-
-// Parallax scroll component
 export const ParallaxElement: React.FC<{
   children: React.ReactNode;
   speed?: number;

@@ -40,7 +40,15 @@
     <!-- Enhanced viewport for iOS iframe compatibility -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
     <meta name="theme-color" content="#059669" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#059669" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#047857" />
     <meta name="description" content="Massage Corner Sverige AB - Vårda din kropp med en härlig massage. Boka din behandling online." />
+    
+    <!-- Enhanced SEO and PWA Meta Tags -->
+    <meta name="keywords" content="massage, medicinsk massage, klassisk massage, avslappningsmassage, Jönköping, Sverige, bokadirekt, wellness, hälsa" />
+    <meta name="author" content="Massage Corner Sverige AB" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
     
     <!-- Enhanced PWA Meta Tags for iOS -->
     <meta name="application-name" content="Massage Corner Sverige AB" />
@@ -86,10 +94,24 @@
     <!-- Enhanced SEO Meta Tags -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Massage Corner Sverige AB" />
-    <meta property="og:description" content="Vårda din kropp med en härlig massage. Professionell massage i Jönköping - boka din behandling online." />
+    <meta property="og:description" content="Professionell massage i Jönköping. Medicinsk massage, klassisk massage och avslappningsmassage. Boka din behandling online via Bokadirekt." />
     <meta property="og:site_name" content="Massage Corner Sverige AB" />
-    <meta property="og:url" content="https://www.massage-corner.se" />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:url" content="https://dynamic-figolla-575c59.netlify.app" />
+    <meta property="og:image" content="/apple-touch-icon-1024x1024.png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:locale" content="sv_SE" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Massage Corner Sverige AB" />
+    <meta name="twitter:description" content="Professionell massage i Jönköping. Boka din behandling online." />
+    <meta name="twitter:image" content="/apple-touch-icon-1024x1024.png" />
+    
+    <!-- Additional PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-title" content="Massage Corner" />
     
     <!-- iOS Safari specific meta tags -->
     <meta name="apple-touch-fullscreen" content="yes" />
@@ -105,46 +127,139 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
+          navigator.serviceWorker.register('/sw.js', {
+            scope: '/',
+            updateViaCache: 'none'
+          })
             .then((registration) => {
-              console.log('SW registered successfully');
+              console.log('SW registered successfully:', registration.scope);
               
-              // Silent update handling - no user prompts (iOS compatible)
+              // Enhanced update handling with background sync
               registration.addEventListener('updatefound', () => {
                 const newWorker = registration.installing;
                 if (newWorker) {
                   newWorker.addEventListener('statechange', () => {
                     if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                      // New content available, but don't show popup
                       console.log('New content available - will be used on next visit');
+                      // Background sync for periodic updates
+                      if ('sync' in window.ServiceWorkerRegistration.prototype) {
+                        registration.sync.register('background-sync');
+                      }
+                      // Optionally notify user of update
+                      if ('Notification' in window && Notification.permission === 'granted') {
+                        new Notification('App Updated', {
+                          body: 'Ny version tillgänglig vid nästa besök',
+                          icon: '/Favicon/android-icon-192x192.png',
+                          badge: '/Favicon/android-icon-96x96.png'
+                        });
+                      }
                     }
                   });
                 }
               });
+              
+              // Check for updates periodically
+              setInterval(() => {
+                registration.update();
+              }, 60000); // Check every minute
+              
+              // Background sync registration
+              if ('sync' in window.ServiceWorkerRegistration.prototype) {
+                registration.sync.register('background-sync');
+              }
             })
             .catch((registrationError) => {
               console.log('SW registration failed:', registrationError);
             });
         });
+        
+        // Listen for messages from service worker
+        navigator.serviceWorker.addEventListener('message', (event) => {
+          console.log('Message from SW:', event.data);
+          if (event.data && event.data.type === 'SKIP_WAITING') {
+            window.location.reload();
+          }
+        });
       }
 
-      // iOS Safari specific optimizations
+      // Enhanced iOS Safari optimizations
       if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-        // Prevent iOS Safari zoom on input focus
+        // Prevent iOS Safari zoom and improve touch handling
         document.addEventListener('touchstart', function() {}, { passive: true });
         
-        // Prevent iOS Safari rubber band scrolling
+        // Enhanced rubber band scrolling prevention
         document.addEventListener('touchmove', function(e) {
           if (document.body.classList.contains('iframe-modal-open')) {
             e.preventDefault();
           }
         }, { passive: false });
+        
+        // Prevent iOS Safari bounce
+        document.addEventListener('touchstart', function(e) {
+          if (e.touches.length > 1) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+        
+        // Handle orientation changes
+        window.addEventListener('orientationchange', function() {
+          setTimeout(() => {
+            window.scrollTo(0, 0);
+          }, 100);
+        });
       }
 
-      // VKWebView specific optimizations
+      // Enhanced VKWebView and TWA optimizations
       if (window.navigator.userAgent.includes('VKWebView')) {
         console.log('VKWebView detected - optimizing for VK environment');
-        // Add VK-specific optimizations here if needed
+        document.body.classList.add('vk-webview');
+      }
+      
+      // TWA detection and optimization
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        console.log('Running in standalone mode (TWA/PWA)');
+        document.body.classList.add('standalone-mode');
+      }
+      
+      // Enhanced performance monitoring
+      if ('performance' in window) {
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+          }, 0);
+        });
+      }
+      
+      // Enhanced notification handling for PWA
+      if ('Notification' in window && 'serviceWorker' in navigator) {
+        if (Notification.permission === 'default') {
+          // Don't request immediately, wait for user interaction
+          document.addEventListener('click', function requestNotificationPermission() {
+            Notification.requestPermission().then(permission => {
+              console.log('Notification permission:', permission);
+              if (permission === 'granted') {
+                // Register for push notifications if supported
+                navigator.serviceWorker.ready.then(registration => {
+                  if ('pushManager' in registration) {
+                    console.log('Push notifications supported');
+                  }
+                });
+              }
+            });
+            document.removeEventListener('click', requestNotificationPermission);
+          }, { once: true });
+        }
+      }
+      
+      // Enhanced background sync support
+      if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.prototype) {
+        navigator.serviceWorker.ready.then(registration => {
+          // Register background sync for offline actions
+          return registration.sync.register('background-sync');
+        }).catch(err => {
+          console.log('Background sync registration failed:', err);
+        });
       }
     </script>
   </body>

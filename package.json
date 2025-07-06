@@ -6,8 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:analyze": "vite build --mode analyze",
     "preview": "vite preview",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "pwa:generate": "pwa-asset-generator logo.png public/icons --background '#059669' --theme-color '#059669'",
+    "lighthouse": "lighthouse https://stellular-florentine-432bf0.netlify.app --output html --output-path ./lighthouse-report.html",
+    "test:pwa": "pwa-test-runner"
   },
   "dependencies": {
     "react": "^18.2.0",

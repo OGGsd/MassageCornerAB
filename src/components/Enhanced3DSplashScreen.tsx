@@ -2,7 +2,6 @@ import React from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { Heart } from 'lucide-react';
 import FloatingElements3D from './FloatingElements3D';
-import { BouncingLogo } from './SpringAnimations';
 
 const Enhanced3DSplashScreen: React.FC = () => {
   // Spring animations for the entire splash
@@ -19,6 +18,12 @@ const Enhanced3DSplashScreen: React.FC = () => {
     config: { tension: 300, friction: 30 }
   });
 
+  const logoSpring = useSpring({
+    from: { scale: 0, rotate: -180 },
+    to: { scale: 1, rotate: 0 },
+    delay: 200,
+    config: { tension: 260, friction: 20 }
+  });
   return (
     <animated.div 
       style={containerSpring}
@@ -30,7 +35,7 @@ const Enhanced3DSplashScreen: React.FC = () => {
       <div className="text-center px-4 relative z-10">
         {/* Enhanced Logo with 3D effects */}
         <div className="flex items-center justify-center mb-6">
-          <BouncingLogo className="relative">
+          <animated.div style={logoSpring} className="relative">
             <div className="w-20 h-20 md:w-24 md:h-24 mr-4 bg-white p-2 shadow-lg flex items-center justify-center relative overflow-hidden" style={{ borderRadius: '12px' }}>
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-600 opacity-20 animate-pulse"></div>
@@ -43,7 +48,7 @@ const Enhanced3DSplashScreen: React.FC = () => {
               {/* Orbiting ring */}
               <div className="absolute inset-0 border-2 border-white/30 animate-spin" style={{ animationDuration: '8s', borderRadius: '12px' }}></div>
             </div>
-          </BouncingLogo>
+          </animated.div>
           
           <animated.div style={textSpring} className="text-left">
             <h1 className="text-white text-xl md:text-2xl font-bold tracking-wide">

@@ -10,7 +10,22 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpeg,jpg,json}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpeg,jpg,json,woff2}'],
+        maximumFileSizeToCacheInBytes: 5000000, // 5MB
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true,
+        navigateFallback: '/index.html',
+        navigateFallbackDenylist: [
+          /^\/_/,
+          /\/[^/?]+\.[^/]+$/,
+          /^\/api\//,
+          /^\/assets\//,
+          /^\/sw\.js$/,
+          /^\/manifest\.json$/,
+          /^\/offline\.html$/
+        ],
+        // Enhanced background sync for PWA Builder requirements
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -18,7 +33,7 @@ export default defineConfig({
             options: {
               cacheName: 'google-fonts-cache',
               expiration: {
-                maxEntries: 10,
+                maxEntries: 20,
                 maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
               }
             }
@@ -29,7 +44,7 @@ export default defineConfig({
             options: {
               cacheName: 'gstatic-fonts-cache',
               expiration: {
-                maxEntries: 10,
+                maxEntries: 20,
                 maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
               }
             }
@@ -39,11 +54,18 @@ export default defineConfig({
             handler: 'NetworkFirst',
             options: {
               cacheName: 'booking-system-cache',
+              networkTimeoutSeconds: 5,
               expiration: {
-                maxEntries: 20,
-                maxAgeSeconds: 60 * 60 * 24 // 1 day
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 2 // 2 hours
               },
-              networkTimeoutSeconds: 10
+              // Background sync for offline booking attempts
+              backgroundSync: {
+                name: 'booking-queue',
+                options: {
+                  maxRetentionTime: 24 * 60 // 24 hours
+                }
+              }
             }
           },
           {
@@ -52,64 +74,43 @@ export default defineConfig({
             options: {
               cacheName: 'images-cache',
               expiration: {
-                maxEntries: 100,
+                maxEntries: 200,
                 maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
               }
             }
           },
-          // Cache Swedish routes specifically
           {
-            urlPattern: /^.*\/(integritetspolicy|anvandardvillkor|about|om-oss).*$/,
+            urlPattern: /^.*\/(integritetspolicy|anvandardvillkor|about).*$/,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'app-routes-cache',
+              networkTimeoutSeconds: 3,
               expiration: {
                 maxEntries: 50,
                 maxAgeSeconds: 60 * 60 * 24 * 7 // 1 week
-              },
-              networkTimeoutSeconds: 3
+              }
+            }
+          },
+          {
+            urlPattern: /\.(?:js|css)$/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'static-resources',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
+              }
             }
           }
-        ],
-        // Critical: Fallback to main app for SPA routing, not offline page
-        navigateFallback: '/index.html',
-        navigateFallbackDenylist: [
-          // Don't fallback for:
-          /^\/_/, // Vite internal routes
-          /\/[^/?]+\.[^/]+$/, // Files with extensions
-          /^\/api\//, // API routes
-          /^\/assets\//, // Asset files
-          /^\/sw\.js$/, // Service worker
-          /^\/manifest\.json$/, // Manifest
-          /^\/offline\.html$/, // Offline page itself
-          /^\/widget-data\.json$/, // Widget data
-          /^\/adaptive-card\.json$/ // Adaptive card
-        ],
-        // Include Swedish routes in precaching
-        navigateFallbackAllowlist: [
-          /^\/$/,  // Home
-          /^\/about$/,  // About
-          /^\/om-oss$/,  // Swedish about
-          /^\/integritetspolicy$/,  // Swedish privacy
-          /^\/anvandardvillkor$/,  // Swedish terms
-          /^\/privacy$/,  // English privacy (redirects)
-          /^\/terms$/   // English terms (redirects)
-        ],
-        skipWaiting: true,
-        clientsClaim: true,
-        // Handle offline scenarios separately
-        offlineGoogleAnalytics: false,
-        cleanupOutdatedCaches: true
+        ]
       },
       includeAssets: [
         'logo.png',
         'Olga.png',
-        // Core favicon files
         'Favicon/favicon.ico',
         'Favicon/favicon-16x16.png',
         'Favicon/favicon-32x32.png',
         'Favicon/favicon-96x96.png',
-        // Apple Touch Icons - Complete Set
         'Favicon/apple-icon-57x57.png',
         'Favicon/apple-icon-60x60.png',
         'Favicon/apple-icon-72x72.png',
@@ -121,30 +122,29 @@ export default defineConfig({
         'Favicon/apple-icon-180x180.png',
         'Favicon/apple-icon-precomposed.png',
         'Favicon/apple-icon.png',
-        // Android Chrome Icons - Complete Set
         'Favicon/android-icon-36x36.png',
         'Favicon/android-icon-48x48.png',
         'Favicon/android-icon-72x72.png',
         'Favicon/android-icon-96x96.png',
         'Favicon/android-icon-144x144.png',
         'Favicon/android-icon-192x192.png',
-        // Microsoft Tiles - Complete Set
         'Favicon/ms-icon-70x70.png',
         'Favicon/ms-icon-144x144.png',
         'Favicon/ms-icon-150x150.png',
         'Favicon/ms-icon-310x310.png',
-        // Special files
         'Favicon/safari-pinned-tab.svg',
         'Favicon/1024x1024.png',
-        // Root level Apple icons
         'apple-touch-icon.png',
         'apple-touch-icon-152x152.png', 
         'apple-touch-icon-1024x1024.png',
-        // Other assets
         'offline.html',
         'widget-data.json',
         'adaptive-card.json'
       ],
+      devOptions: {
+        enabled: false,
+        type: 'module'
+      },
       manifest: {
         name: 'Massage Corner Sverige AB',
         short_name: 'Massage Corner',
@@ -152,12 +152,28 @@ export default defineConfig({
         theme_color: '#059669',
         background_color: '#059669',
         display: 'standalone',
-        display_override: ['fullscreen', 'standalone', 'minimal-ui', 'browser'],
-        orientation: 'portrait-primary',
+        display_override: ['window-controls-overlay', 'fullscreen', 'standalone', 'minimal-ui', 'browser'],
+        orientation: 'any',
         scope: '/',
         start_url: '/',
+        id: 'massage-corner-sverige-ab',
         categories: ['health', 'wellness', 'lifestyle', 'medical'],
         lang: 'sv',
+        dir: 'ltr',
+        iarc_rating_id: 'e84b072d-71b3-4d3e-86ae-31a8ce4e53b7',
+        prefer_related_applications: false,
+        related_applications: [
+          {
+            platform: 'webapp',
+            url: 'https://dynamic-figolla-575c59.netlify.app/manifest.json',
+            id: 'massage-corner-sverige-ab'
+          }
+        ],
+        scope_extensions: [
+          {
+            origin: 'https://www.bokadirekt.se'
+          }
+        ],
         edge_side_panel: {
           preferred_width: 400
         },
@@ -170,6 +186,9 @@ export default defineConfig({
             }
           }
         ],
+        launch_handler: {
+          client_mode: 'navigate-existing'
+        },
         handle_links: 'preferred',
         protocol_handlers: [
           {
@@ -214,8 +233,23 @@ export default defineConfig({
             ]
           }
         ],
+        screenshots: [
+          {
+            src: '/Favicon/android-icon-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            platform: 'wide',
+            label: 'Massage Corner - Booking Interface'
+          },
+          {
+            src: '/Favicon/android-icon-192x192.png',
+            sizes: '192x192', 
+            type: 'image/png',
+            platform: 'narrow',
+            label: 'Massage Corner - Mobile View'
+          }
+        ],
         icons: [
-          // Any purpose icons
           {
             src: '/Favicon/favicon-16x16.png',
             sizes: '16x16',
@@ -259,7 +293,6 @@ export default defineConfig({
             purpose: 'any'
           },
           
-          // Maskable purpose icons (separate entries for adaptive icons)
           {
             src: '/Favicon/apple-icon-152x152.png',
             sizes: '152x152',
@@ -323,9 +356,6 @@ export default defineConfig({
             ]
           }
         ]
-      },
-      devOptions: {
-        enabled: false
       }
     })
   ],
@@ -339,10 +369,19 @@ export default defineConfig({
           vendor: ['react', 'react-dom'],
           router: ['react-router-dom'],
           icons: ['lucide-react'],
-          spring: ['@react-spring/web']
+          spring: ['@react-spring/web'],
+          motion: ['framer-motion']
         }
       }
     },
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 1000,
+    target: 'esnext',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
   }
 });

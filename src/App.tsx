@@ -6,7 +6,6 @@ import MassageBookingPage from './components/MassageBookingPage';
 import About from './components/OmOss';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
-import InstallPrompt from './components/InstallPrompt';
 
 // Initialize security helpers
 import { initializeSecurity } from './utils/securityHelpers';
@@ -33,8 +32,6 @@ function App() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <InstallPrompt />
-        
         <AnimatePresence mode="wait">
           {showSplash ? (
             <Enhanced3DSplashScreen key="splash" />
@@ -51,17 +48,14 @@ function App() {
                 
                 {/* Info pages */}
                 <Route path="/about" element={<About />} />
-                <Route path="/privacy" element={<PrivacyPolicy />} />
-                <Route path="/terms" element={<TermsOfService />} />
                 
                 {/* Swedish routes */}
                 <Route path="/integritetspolicy" element={<PrivacyPolicy />} />
                 <Route path="/anvandardvillkor" element={<TermsOfService />} />
                 
-                {/* Legacy redirects for backwards compatibility */}
-                <Route path="/location/:branch" element={<Navigate to="/" replace />} />
-                <Route path="/city" element={<Navigate to="/" replace />} />
-                <Route path="/asecs" element={<Navigate to="/" replace />} />
+                {/* English to Swedish redirects */}
+                <Route path="/privacy" element={<Navigate to="/integritetspolicy" replace />} />
+                <Route path="/terms" element={<Navigate to="/anvandardvillkor" replace />} />
                 <Route path="/om-oss" element={<Navigate to="/about" replace />} />
                 
                 {/* Catch all route - redirect to home */}

@@ -1,10 +1,10 @@
 import React from 'react';
 
-// DISABLED: No install prompts or popups as requested
+// COMPLETELY DISABLED - NO INSTALL PROMPTS AS REQUESTED
 // This component is now completely disabled to prevent any PWA popups
 
 const InstallPrompt: React.FC = () => {
-  // Return null to render nothing - no install prompts
+  // Return null to render nothing - no install prompts whatsoever
   return null;
 };
 
