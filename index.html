@@ -69,7 +69,19 @@
     <meta name="apple-mobile-web-app-orientations" content="portrait" />
     
     <!-- Enhanced Content Security Policy for iframe security -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.bokadirekt.se https://*.bokadirekt.se; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; frame-src 'self' https://www.bokadirekt.se https://*.bokadirekt.se; connect-src 'self' https: wss:; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self' https://www.bokadirekt.se https://*.bokadirekt.se;">
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self' https:;
+      script-src 'self' 'unsafe-inline' https://www.bokadirekt.se https://*.bokadirekt.se;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      frame-src 'self' https://www.bokadirekt.se https://*.bokadirekt.se;
+      connect-src 'self' https: wss:;
+      media-src 'self' https:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self' https://www.bokadirekt.se https://*.bokadirekt.se;
+    ">
     
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json" />

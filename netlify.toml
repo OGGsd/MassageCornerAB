@@ -2,11 +2,6 @@
   publish = "dist"
   command = "npm run build"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 # Swedish URL redirects
 [[redirects]]
   from = "/om-oss"
@@ -23,14 +18,30 @@
   to = "/anvandardvillkor"
   status = 301
 
-# Ensure SPA routing works for Swedish URLs
+# SPA routing for all pages
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/index.html"
+  status = 200
+
 [[redirects]]
   from = "/integritetspolicy"
   to = "/index.html"
   status = 200
 
 [[redirects]]
-  from = "/anvandardvillkor" 
+  from = "/anvandardvillkor"
+  to = "/index.html"
+  status = 200
+
+# Catch all for SPA routing
+[[redirects]]
+  from = "/*"
   to = "/index.html"
   status = 200
 

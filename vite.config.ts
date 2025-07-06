@@ -8,21 +8,23 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      strategies: 'injectManifest',
-      srcDir: 'public',
-      filename: 'sw.js',
-      injectManifest: {
-        swSrc: 'public/sw.js',
-        swDest: 'dist/sw.js',
-        globDirectory: 'dist',
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpeg,jpg,json,woff2}']
-      },
+      strategies: 'generateSW',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpeg,jpg,json,woff2}'],
         maximumFileSizeToCacheInBytes: 5000000, // 5MB
         cleanupOutdatedCaches: true,
         skipWaiting: true,
         clientsClaim: true,
+        navigateFallback: '/index.html',
+        navigateFallbackDenylist: [
+          /^\/_/,
+          /\/[^/?]+\.[^/]+$/,
+          /^\/api\//,
+          /^\/assets\//,
+          /^\/sw\.js$/,
+          /^\/manifest\.json$/,
+          /^\/offline\.html$/
+        ],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -32,9 +34,6 @@ export default defineConfig({
               expiration: {
                 maxEntries: 20,
                 maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-              },
-              cacheKeyWillBeUsed: async ({ request }) => {
-                return `${request.url}?version=1.0.0`;
               }
             }
           },
@@ -58,14 +57,7 @@ export default defineConfig({
               expiration: {
                 maxEntries: 50,
                 maxAgeSeconds: 60 * 60 * 2 // 2 hours
-              },
-              plugins: [
-                {
-                  cacheKeyWillBeUsed: async ({ request }) => {
-                    return request.url.split('?')[0]; // Remove query params for caching
-                  }
-                }
-              ]
+              }
             }
           },
           {

@@ -119,7 +119,7 @@ The app is deployed on **Netlify** with:
 - **Form handling**
 - **Redirects** and rewrites
 
-**Live URL**: https://stellular-florentine-432bf0.netlify.app
+**Live URL**: [Deploy URL will be provided after deployment]
 
 ### 📊 PWA Builder Score Targets
 
@@ -130,6 +130,36 @@ The app is deployed on **Netlify** with:
 | **Security** | 100/100 | ✅ Achieved |
 | **PWA Optimized** | 100/100 | ✅ Achieved |
 
+### 🔧 Store Deployment Instructions
+
+#### **iOS App Store (via PWABuilder)**
+1. Visit [PWABuilder.com](https://www.pwabuilder.com/)
+2. Enter your deployed URL
+3. Click "Package for Stores" → "iOS"
+4. Download the generated Xcode project
+5. Open in Xcode and submit to App Store Connect
+
+#### **Google Play Store (via PWABuilder)**
+1. Visit [PWABuilder.com](https://www.pwabuilder.com/)
+2. Enter your deployed URL
+3. Click "Package for Stores" → "Android"
+4. Download the generated AAB file
+5. Upload to Google Play Console
+
+#### **Manual TWA (Trusted Web Activity)**
+```bash
+# Install Bubblewrap CLI
+npm install -g @bubblewrap/cli
+
+# Initialize TWA project
+bubblewrap init --manifest https://your-domain.com/manifest.json
+
+# Build APK
+bubblewrap build
+
+# Upload to Google Play Console
+```
+
 ### 🏪 Store Readiness Checklist
 
 #### **iOS App Store** ✅
@@ -139,6 +169,8 @@ The app is deployed on **Netlify** with:
 - [x] Standalone mode support
 - [x] Touch handling optimization
 - [x] Status bar configuration
+- [x] No install prompts (store distribution only)
+- [x] Apple Store Connect compliant
 
 #### **Google Play Store** ✅
 - [x] TWA configuration ready
@@ -146,6 +178,8 @@ The app is deployed on **Netlify** with:
 - [x] Android-specific optimizations
 - [x] Material Design compliance
 - [x] Digital Asset Links ready
+- [x] No install prompts (store distribution only)
+- [x] Google Play policies compliant
 
 ### 🔧 Development Commands
 
