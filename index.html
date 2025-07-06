@@ -96,7 +96,7 @@
     <meta property="og:title" content="Massage Corner Sverige AB" />
     <meta property="og:description" content="Professionell massage i Jönköping. Medicinsk massage, klassisk massage och avslappningsmassage. Boka din behandling online via Bokadirekt." />
     <meta property="og:site_name" content="Massage Corner Sverige AB" />
-    <meta property="og:url" content="https://stellular-florentine-432bf0.netlify.app" />
+    <meta property="og:url" content="https://dynamic-figolla-575c59.netlify.app" />
     <meta property="og:image" content="/apple-touch-icon-1024x1024.png" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="1024" />
@@ -134,18 +134,23 @@
             .then((registration) => {
               console.log('SW registered successfully:', registration.scope);
               
-              // Enhanced update handling
+              // Enhanced update handling with background sync
               registration.addEventListener('updatefound', () => {
                 const newWorker = registration.installing;
                 if (newWorker) {
                   newWorker.addEventListener('statechange', () => {
                     if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                       console.log('New content available - will be used on next visit');
+                      // Background sync for periodic updates
+                      if ('sync' in window.ServiceWorkerRegistration.prototype) {
+                        registration.sync.register('background-sync');
+                      }
                       // Optionally notify user of update
                       if ('Notification' in window && Notification.permission === 'granted') {
                         new Notification('App Updated', {
                           body: 'Ny version tillgänglig vid nästa besök',
-                          icon: '/Favicon/android-icon-192x192.png'
+                          icon: '/Favicon/android-icon-192x192.png',
+                          badge: '/Favicon/android-icon-96x96.png'
                         });
                       }
                     }
@@ -157,6 +162,11 @@
               setInterval(() => {
                 registration.update();
               }, 60000); // Check every minute
+              
+              // Background sync registration
+              if ('sync' in window.ServiceWorkerRegistration.prototype) {
+                registration.sync.register('background-sync');
+              }
             })
             .catch((registrationError) => {
               console.log('SW registration failed:', registrationError);
@@ -166,6 +176,9 @@
         // Listen for messages from service worker
         navigator.serviceWorker.addEventListener('message', (event) => {
           console.log('Message from SW:', event.data);
+          if (event.data && event.data.type === 'SKIP_WAITING') {
+            window.location.reload();
+          }
         });
       }
 
@@ -218,17 +231,35 @@
         });
       }
       
-      // Request notification permission for PWA features
+      // Enhanced notification handling for PWA
       if ('Notification' in window && 'serviceWorker' in navigator) {
         if (Notification.permission === 'default') {
           // Don't request immediately, wait for user interaction
           document.addEventListener('click', function requestNotificationPermission() {
             Notification.requestPermission().then(permission => {
               console.log('Notification permission:', permission);
+              if (permission === 'granted') {
+                // Register for push notifications if supported
+                navigator.serviceWorker.ready.then(registration => {
+                  if ('pushManager' in registration) {
+                    console.log('Push notifications supported');
+                  }
+                });
+              }
             });
             document.removeEventListener('click', requestNotificationPermission);
           }, { once: true });
         }
+      }
+      
+      // Enhanced background sync support
+      if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.prototype) {
+        navigator.serviceWorker.ready.then(registration => {
+          // Register background sync for offline actions
+          return registration.sync.register('background-sync');
+        }).catch(err => {
+          console.log('Background sync registration failed:', err);
+        });
       }
     </script>
   </body>

@@ -25,6 +25,7 @@ export default defineConfig({
           /^\/manifest\.json$/,
           /^\/offline\.html$/
         ],
+        // Enhanced background sync for PWA Builder requirements
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -57,6 +58,13 @@ export default defineConfig({
               expiration: {
                 maxEntries: 50,
                 maxAgeSeconds: 60 * 60 * 2 // 2 hours
+              },
+              // Background sync for offline booking attempts
+              backgroundSync: {
+                name: 'booking-queue',
+                options: {
+                  maxRetentionTime: 24 * 60 // 24 hours
+                }
               }
             }
           },
@@ -144,16 +152,28 @@ export default defineConfig({
         theme_color: '#059669',
         background_color: '#059669',
         display: 'standalone',
-        display_override: ['fullscreen', 'standalone', 'minimal-ui', 'browser'],
+        display_override: ['window-controls-overlay', 'fullscreen', 'standalone', 'minimal-ui', 'browser'],
         orientation: 'any',
         scope: '/',
         start_url: '/',
-        id: '/',
+        id: 'massage-corner-sverige-ab',
         categories: ['health', 'wellness', 'lifestyle', 'medical'],
         lang: 'sv',
         dir: 'ltr',
         iarc_rating_id: 'e84b072d-71b3-4d3e-86ae-31a8ce4e53b7',
         prefer_related_applications: false,
+        related_applications: [
+          {
+            platform: 'webapp',
+            url: 'https://dynamic-figolla-575c59.netlify.app/manifest.json',
+            id: 'massage-corner-sverige-ab'
+          }
+        ],
+        scope_extensions: [
+          {
+            origin: 'https://www.bokadirekt.se'
+          }
+        ],
         edge_side_panel: {
           preferred_width: 400
         },

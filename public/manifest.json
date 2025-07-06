@@ -5,14 +5,28 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["fullscreen", "standalone", "minimal-ui", "browser"],
+  "display_override": ["window-controls-overlay", "fullscreen", "standalone", "minimal-ui", "browser"],
   "orientation": "any",
   "theme_color": "#059669",
   "background_color": "#059669",
   "lang": "sv",
   "dir": "ltr",
+  "id": "massage-corner-sverige-ab",
   "categories": ["health", "wellness", "lifestyle", "medical"],
   "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://dynamic-figolla-575c59.netlify.app/manifest.json",
+      "id": "massage-corner-sverige-ab"
+    }
+  ],
+  "scope_extensions": [
+    {
+      "origin": "https://www.bokadirekt.se"
+    }
+  ],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
   "edge_side_panel": {
     "preferred_width": 400
   },
