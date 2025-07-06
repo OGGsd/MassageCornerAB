@@ -10,7 +10,10 @@
   "theme_color": "#059669",
   "background_color": "#059669",
   "lang": "sv",
+  "dir": "ltr",
   "categories": ["health", "wellness", "lifestyle", "medical"],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "prefer_related_applications": false,
   "edge_side_panel": {
     "preferred_width": 400
   },
@@ -24,6 +27,9 @@
     }
   ],
   "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "protocol_handlers": [
     {
       "protocol": "tel",
@@ -54,15 +60,15 @@
       "type": "application/json",
       "screenshots": [
         {
-          "src": "/Favicon/favicon-192x192.png",
+          "src": "/Favicon/android-icon-192x192.png",
           "sizes": "192x192",
           "label": "Massage Corner Widget"
         }
       ],
       "icons": [
         {
-          "src": "/Favicon/favicon-96x96.png",
-          "sizes": "72x72"
+          "src": "/Favicon/android-icon-96x96.png",
+          "sizes": "96x96"
         }
       ]
     }
@@ -105,24 +111,6 @@
       "purpose": "any"
     },
     {
-      "src": "/Favicon/android-icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/Favicon/apple-icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/Favicon/apple-icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
       "src": "/Favicon/1024x1024.png",
       "sizes": "512x512",
       "type": "image/png",
@@ -134,7 +122,6 @@
       "type": "image/png",
       "purpose": "any"
     },
-    
     {
       "src": "/Favicon/android-icon-36x36.png",
       "sizes": "36x36",
@@ -172,72 +159,32 @@
       "purpose": "maskable"
     },
     {
-      "src": "/Favicon/apple-icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/apple-touch-icon-1024x1024.png",
-      "sizes": "1024x1024",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Boka medicinsk massage",
-      "short_name": "Medicinsk",
-      "description": "Boka medicinsk massage med ultraljudbehandling",
-      "url": "/?category=medicinsk",
-      "icons": [
-        {
-          "src": "/Favicon/android-icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Boka klassisk massage", 
-      "short_name": "Klassisk",
-      "description": "Boka djupgående klassisk massage",
-      "url": "/?category=klassisk",
-      "icons": [
-        {
-          "src": "/Favicon/android-icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Ring oss",
-      "short_name": "Ring",
-      "description": "Ring Massage Corner direkt",
-      "url": "tel:0731759567",
-      "icons": [
-        {
-          "src": "/Favicon/android-icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ]
-}
+      "src": "/Favicon/1024x1024.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/apple-touch-icon-1024x1024.png", 
-      "sizes": "1024x1024",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
       "src": "/apple-touch-icon-1024x1024.png",
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/Favicon/android-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Massage Corner - Booking Interface"
+    },
+    {
+      "src": "/Favicon/android-icon-192x192.png",
+      "sizes": "192x192", 
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Massage Corner - Mobile View"
     }
   ],
   "shortcuts": [
@@ -270,6 +217,18 @@
       "short_name": "Ring",
       "description": "Ring Massage Corner direkt",
       "url": "tel:0731759567",
+      "icons": [
+        {
+          "src": "/Favicon/android-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Om oss",
+      "short_name": "Info",
+      "description": "Läs mer om Massage Corner",
+      "url": "/about",
       "icons": [
         {
           "src": "/Favicon/android-icon-96x96.png",

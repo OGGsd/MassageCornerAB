@@ -10,6 +10,7 @@ import InstallPrompt from './components/InstallPrompt';
 
 // Initialize security helpers
 import { initializeSecurity } from './utils/securityHelpers';
+import './utils/pwaHelpers';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
