@@ -1,9 +1,11 @@
 import React from 'react';
-import PWAInstallPrompt from './PWAInstallPrompt';
 
-// Smart PWA Install Prompt - Only shows when appropriate
+// COMPLETELY DISABLED - NO INSTALL PROMPTS AS REQUESTED
+// This component is now completely disabled to prevent any PWA popups
+
 const InstallPrompt: React.FC = () => {
-  return <PWAInstallPrompt />;
+  // Return null to render nothing - no install prompts whatsoever
+  return null;
 };
 
 export default InstallPrompt;
